@@ -1,0 +1,17 @@
+# Secrets
+scripts/.env
+*.env
+scripts/endpoints.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude local config
+.claude/
+
+# User-generated artifacts (not part of the public release)
+probes/generated/
+results/
+

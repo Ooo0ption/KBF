@@ -1,0 +1,4973 @@
+{
+  "protocol": "cloze_stage1_v1",
+  "timestamp": "2026-03-15T12:46:04.713599",
+  "total_probes": 315,
+  "reference_model": "google/gemini-3-flash-preview",
+  "contrast_model": "qwen/qwen3.5-9b",
+  "n_original_probes": 375,
+  "n_config_invariant": 364,
+  "n_final_probes": 315,
+  "domain_tolerances": {
+    "chemistry_bp": {
+      "tol": 3.0,
+      "mode": "abs"
+    },
+    "chemistry_mp": {
+      "tol": 5.0,
+      "mode": "abs"
+    },
+    "physics": {
+      "tol": 0.05,
+      "mode": "rel"
+    },
+    "astronomy": {
+      "tol": 0.05,
+      "mode": "rel"
+    },
+    "biology": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "math": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "programming": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "crypto_params": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "medical": {
+      "tol": 0.1,
+      "mode": "rel"
+    },
+    "pop_culture": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "internet_culture": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "chinese_history": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "chinese_geography": {
+      "tol": 0.05,
+      "mode": "rel"
+    },
+    "chinese_internet": {
+      "tol": 0,
+      "mode": "abs"
+    },
+    "chinese_literature": {
+      "tol": 0,
+      "mode": "abs"
+    }
+  },
+  "provider_pinning": {
+    "deepseek/deepseek-v3.2": "Google",
+    "google/gemini-3-flash-preview": "Google",
+    "z-ai/glm-5": "Z.AI",
+    "z-ai/glm-4.7": "Z.AI",
+    "qwen/qwen3.5-27b": "Alibaba",
+    "qwen/qwen3.5-9b": "Together",
+    "openai/gpt-4.1-mini": "OpenAI",
+    "moonshotai/kimi-k2-0905": "Moonshot AI",
+    "qwen/qwen3.5-397b-a17b": "Alibaba"
+  },
+  "batch_size": 10,
+  "probes": [
+    {
+      "name": "hexamethyldisilazane",
+      "domain": "chemistry_bp",
+      "original_value": 125.0,
+      "cloze_consensus": 125.0,
+      "consensus_raw": {
+        "clean_t0": 125.0,
+        "helpful_t03": 125.0,
+        "safety_t07": 125.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "trimethylsilyl azide",
+      "domain": "chemistry_bp",
+      "original_value": 95.0,
+      "cloze_consensus": 95.0,
+      "consensus_raw": {
+        "clean_t0": 95.0,
+        "helpful_t03": 95.0,
+        "safety_t07": 95.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "tris(trimethylsilyl)phosphine",
+      "domain": "chemistry_bp",
+      "original_value": 243.0,
+      "cloze_consensus": 243.0,
+      "consensus_raw": {
+        "clean_t0": 243.0,
+        "helpful_t03": 243.0,
+        "safety_t07": 243.0
+      },
+      "contrast_value": 130.0
+    },
+    {
+      "name": "octamethylcyclotetrasiloxane",
+      "domain": "chemistry_bp",
+      "original_value": 175.0,
+      "cloze_consensus": 175.0,
+      "consensus_raw": {
+        "clean_t0": 175.0,
+        "helpful_t03": 175.0,
+        "safety_t07": 175.0
+      },
+      "contrast_value": 170.0
+    },
+    {
+      "name": "trimethylantimony",
+      "domain": "chemistry_bp",
+      "original_value": 80.0,
+      "cloze_consensus": 80.0,
+      "consensus_raw": {
+        "clean_t0": 80.0,
+        "helpful_t03": 80.0,
+        "safety_t07": 80.0
+      },
+      "contrast_value": 200.0
+    },
+    {
+      "name": "hexamethyldisilane",
+      "domain": "chemistry_bp",
+      "original_value": 113.0,
+      "cloze_consensus": 113.0,
+      "consensus_raw": {
+        "clean_t0": 113.0,
+        "helpful_t03": 113.0,
+        "safety_t07": 113.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "bis(trimethylsilyl)acetylene",
+      "domain": "chemistry_bp",
+      "original_value": 134.0,
+      "cloze_consensus": 134.0,
+      "consensus_raw": {
+        "clean_t0": 134.0,
+        "helpful_t03": 133.0,
+        "safety_t07": 134.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "1-methylpyrazole",
+      "domain": "chemistry_bp",
+      "original_value": 127.0,
+      "cloze_consensus": 127.0,
+      "consensus_raw": {
+        "clean_t0": 127.0,
+        "helpful_t03": 127.0,
+        "safety_t07": 127.0
+      },
+      "contrast_value": 120.0
+    },
+    {
+      "name": "2-ethyl-4-methylimidazole",
+      "domain": "chemistry_bp",
+      "original_value": 292.0,
+      "cloze_consensus": 292.0,
+      "consensus_raw": {
+        "clean_t0": 292.0,
+        "helpful_t03": 292.0,
+        "safety_t07": 292.0
+      },
+      "contrast_value": 180.0
+    },
+    {
+      "name": "1,2,5-thiadiazole",
+      "domain": "chemistry_bp",
+      "original_value": 94.0,
+      "cloze_consensus": 94.0,
+      "consensus_raw": {
+        "clean_t0": 94.0,
+        "helpful_t03": 94.0,
+        "safety_t07": 94.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "2,5-dimethylpyrazine",
+      "domain": "chemistry_bp",
+      "original_value": 155.0,
+      "cloze_consensus": 155.0,
+      "consensus_raw": {
+        "clean_t0": 155.0,
+        "helpful_t03": 155.0,
+        "safety_t07": 155.0
+      },
+      "contrast_value": 165.0
+    },
+    {
+      "name": "1,3,5-triazine",
+      "domain": "chemistry_bp",
+      "original_value": 114.0,
+      "cloze_consensus": 114.0,
+      "consensus_raw": {
+        "clean_t0": 114.0,
+        "helpful_t03": 114.0,
+        "safety_t07": 114.0
+      },
+      "contrast_value": 146.0
+    },
+    {
+      "name": "2-methyl-2-oxazoline",
+      "domain": "chemistry_bp",
+      "original_value": 110.0,
+      "cloze_consensus": 110.0,
+      "consensus_raw": {
+        "clean_t0": 110.0,
+        "helpful_t03": 110.0,
+        "safety_t07": 110.0
+      },
+      "contrast_value": 103.0
+    },
+    {
+      "name": "1,3-bis(trifluoromethyl)-5-bromobenzene",
+      "domain": "chemistry_bp",
+      "original_value": 154.0,
+      "cloze_consensus": 154.0,
+      "consensus_raw": {
+        "clean_t0": 154.0,
+        "helpful_t03": 154.0,
+        "safety_t07": 154.0
+      },
+      "contrast_value": 198.0
+    },
+    {
+      "name": "perfluorodecalin",
+      "domain": "chemistry_bp",
+      "original_value": 142.0,
+      "cloze_consensus": 142.0,
+      "consensus_raw": {
+        "clean_t0": 142.0,
+        "helpful_t03": 142.0,
+        "safety_t07": 142.0
+      },
+      "contrast_value": 106.0
+    },
+    {
+      "name": "1,1,1,5,5,5-hexafluoro-2,4-pentanedione",
+      "domain": "chemistry_bp",
+      "original_value": 70.0,
+      "cloze_consensus": 70.0,
+      "consensus_raw": {
+        "clean_t0": 70.0,
+        "helpful_t03": 70.0,
+        "safety_t07": 70.0
+      },
+      "contrast_value": 101.0
+    },
+    {
+      "name": "1,1,2,2,3,3,4,4-octafluorocyclopentane",
+      "domain": "chemistry_bp",
+      "original_value": 79.0,
+      "cloze_consensus": 79.0,
+      "consensus_raw": {
+        "clean_t0": 79.0,
+        "helpful_t03": 79.0,
+        "safety_t07": 79.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "ethyl dichlorophosphate",
+      "domain": "chemistry_bp",
+      "original_value": 167.0,
+      "cloze_consensus": 167.0,
+      "consensus_raw": {
+        "clean_t0": 167.0,
+        "helpful_t03": 167.0,
+        "safety_t07": 167.0
+      },
+      "contrast_value": 142.0
+    },
+    {
+      "name": "phosphonitrilic chloride trimer",
+      "domain": "chemistry_bp",
+      "original_value": 256.0,
+      "cloze_consensus": 256.0,
+      "consensus_raw": {
+        "clean_t0": 256.0,
+        "helpful_t03": 256.0,
+        "safety_t07": 256.0
+      },
+      "contrast_value": 205.0
+    },
+    {
+      "name": "thiophosphoryl chloride",
+      "domain": "chemistry_bp",
+      "original_value": 125.0,
+      "cloze_consensus": 125.0,
+      "consensus_raw": {
+        "clean_t0": 125.0,
+        "helpful_t03": 125.0,
+        "safety_t07": 125.0
+      },
+      "contrast_value": 106.0
+    },
+    {
+      "name": "ethanesulfonyl chloride",
+      "domain": "chemistry_bp",
+      "original_value": 177.0,
+      "cloze_consensus": 177.0,
+      "consensus_raw": {
+        "clean_t0": 177.0,
+        "helpful_t03": 177.0,
+        "safety_t07": 177.0
+      },
+      "contrast_value": 154.0
+    },
+    {
+      "name": "pentafluorosulfanyl chloride",
+      "domain": "chemistry_bp",
+      "original_value": 19.0,
+      "cloze_consensus": -21.0,
+      "consensus_raw": {
+        "clean_t0": -21.0,
+        "helpful_t03": -19.0,
+        "safety_t07": -19.0
+      },
+      "contrast_value": 28.0
+    },
+    {
+      "name": "barium orthosilicate",
+      "domain": "chemistry_mp",
+      "original_value": 1605.0,
+      "cloze_consensus": 1760.0,
+      "consensus_raw": {
+        "clean_t0": 1760.0,
+        "helpful_t03": 1760.0,
+        "safety_t07": 1760.0
+      },
+      "contrast_value": 1550.0
+    },
+    {
+      "name": "lanthanum chromite",
+      "domain": "chemistry_mp",
+      "original_value": 2490.0,
+      "cloze_consensus": 2490.0,
+      "consensus_raw": {
+        "clean_t0": 2490.0,
+        "helpful_t03": 2490.0,
+        "safety_t07": 2490.0
+      },
+      "contrast_value": 2200.0
+    },
+    {
+      "name": "yttrium iron garnet",
+      "domain": "chemistry_mp",
+      "original_value": 1555.0,
+      "cloze_consensus": 1555.0,
+      "consensus_raw": {
+        "clean_t0": 1555.0,
+        "helpful_t03": 1555.0,
+        "safety_t07": 1555.0
+      },
+      "contrast_value": 2400.0
+    },
+    {
+      "name": "beryllium aluminate",
+      "domain": "chemistry_mp",
+      "original_value": 1870.0,
+      "cloze_consensus": 1870.0,
+      "consensus_raw": {
+        "clean_t0": 1870.0,
+        "helpful_t03": 1870.0,
+        "safety_t07": 1870.0
+      },
+      "contrast_value": 2050.0
+    },
+    {
+      "name": "lithium metasilicate",
+      "domain": "chemistry_mp",
+      "original_value": 1201.0,
+      "cloze_consensus": 1201.0,
+      "consensus_raw": {
+        "clean_t0": 1201.0,
+        "helpful_t03": 1201.0,
+        "safety_t07": 1201.0
+      },
+      "contrast_value": 1100.0
+    },
+    {
+      "name": "2,3-dichloro-5,6-dicyano-1,4-benzoquinone",
+      "domain": "chemistry_mp",
+      "original_value": 213.0,
+      "cloze_consensus": 213.0,
+      "consensus_raw": {
+        "clean_t0": 213.0,
+        "helpful_t03": 213.0,
+        "safety_t07": 213.0
+      },
+      "contrast_value": 170.0
+    },
+    {
+      "name": "triphenylphosphine oxide",
+      "domain": "chemistry_mp",
+      "original_value": 156.0,
+      "cloze_consensus": 156.0,
+      "consensus_raw": {
+        "clean_t0": 156.0,
+        "helpful_t03": 156.0,
+        "safety_t07": 156.0
+      },
+      "contrast_value": 106.0
+    },
+    {
+      "name": "4-dimethylaminopyridine",
+      "domain": "chemistry_mp",
+      "original_value": 113.0,
+      "cloze_consensus": 113.0,
+      "consensus_raw": {
+        "clean_t0": 113.0,
+        "helpful_t03": 113.0,
+        "safety_t07": 113.0
+      },
+      "contrast_value": 157.0
+    },
+    {
+      "name": "2,4,6-trichlorophenyl oxalate",
+      "domain": "chemistry_mp",
+      "original_value": 190.0,
+      "cloze_consensus": 190.0,
+      "consensus_raw": {
+        "clean_t0": 190.0,
+        "helpful_t03": 190.0,
+        "safety_t07": 190.0
+      },
+      "contrast_value": 115.0
+    },
+    {
+      "name": "1,2,4,5-tetracyanobenzene",
+      "domain": "chemistry_mp",
+      "original_value": 272.0,
+      "cloze_consensus": 270.0,
+      "consensus_raw": {
+        "clean_t0": 270.0,
+        "helpful_t03": 270.0,
+        "safety_t07": 270.0
+      },
+      "contrast_value": 250.0
+    },
+    {
+      "name": "2-amino-5-nitrobenzophenone",
+      "domain": "chemistry_mp",
+      "original_value": 160.0,
+      "cloze_consensus": 165.0,
+      "consensus_raw": {
+        "clean_t0": 165.0,
+        "helpful_t03": 165.0,
+        "safety_t07": 165.0
+      },
+      "contrast_value": 215.0
+    },
+    {
+      "name": "1,3-dicyclohexylcarbodiimide",
+      "domain": "chemistry_mp",
+      "original_value": 34.0,
+      "cloze_consensus": 34.0,
+      "consensus_raw": {
+        "clean_t0": 34.0,
+        "helpful_t03": 34.0,
+        "safety_t07": 34.0
+      },
+      "contrast_value": 160.0
+    },
+    {
+      "name": "7,7,8,8-tetracyanoquinodimethane",
+      "domain": "chemistry_mp",
+      "original_value": 293.0,
+      "cloze_consensus": 293.0,
+      "consensus_raw": {
+        "clean_t0": 293.0,
+        "helpful_t03": 293.0,
+        "safety_t07": 293.0
+      },
+      "contrast_value": 260.0
+    },
+    {
+      "name": "3,5-dinitrobenzoyl chloride",
+      "domain": "chemistry_mp",
+      "original_value": 68.0,
+      "cloze_consensus": 68.0,
+      "consensus_raw": {
+        "clean_t0": 68.0,
+        "helpful_t03": 68.0,
+        "safety_t07": 68.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "tris(ethylenediamine)cobalt(iii) chloride",
+      "domain": "chemistry_mp",
+      "original_value": 275.0,
+      "cloze_consensus": 275.0,
+      "consensus_raw": {
+        "clean_t0": 275.0,
+        "helpful_t03": 275.0,
+        "safety_t07": 275.0
+      },
+      "contrast_value": 240.0
+    },
+    {
+      "name": "hexamminenickel(ii) chloride",
+      "domain": "chemistry_mp",
+      "original_value": 180.0,
+      "cloze_consensus": 180.0,
+      "consensus_raw": {
+        "clean_t0": 180.0,
+        "helpful_t03": 180.0,
+        "safety_t07": 180.0
+      },
+      "contrast_value": 240.0
+    },
+    {
+      "name": "bis(triphenylphosphine)palladium(ii) dichloride",
+      "domain": "chemistry_mp",
+      "original_value": 270.0,
+      "cloze_consensus": 267.0,
+      "consensus_raw": {
+        "clean_t0": 267.0,
+        "helpful_t03": 270.0,
+        "safety_t07": 270.0
+      },
+      "contrast_value": 150.0
+    },
+    {
+      "name": "ammonium hexachloroplatinate(iv)",
+      "domain": "chemistry_mp",
+      "original_value": 380.0,
+      "cloze_consensus": 380.0,
+      "consensus_raw": {
+        "clean_t0": 380.0,
+        "helpful_t03": 380.0,
+        "safety_t07": 380.0
+      },
+      "contrast_value": 260.0
+    },
+    {
+      "name": "cis-dichlorobis(ethylenediamine)cobalt(iii) chloride",
+      "domain": "chemistry_mp",
+      "original_value": 250.0,
+      "cloze_consensus": 250.0,
+      "consensus_raw": {
+        "clean_t0": 250.0,
+        "helpful_t03": 250.0,
+        "safety_t07": 250.0
+      },
+      "contrast_value": 190.0
+    },
+    {
+      "name": "sodium tetraphenylborate",
+      "domain": "chemistry_mp",
+      "original_value": 300.0,
+      "cloze_consensus": 300.0,
+      "consensus_raw": {
+        "clean_t0": 300.0,
+        "helpful_t03": 300.0,
+        "safety_t07": 300.0
+      },
+      "contrast_value": 260.0
+    },
+    {
+      "name": "tris(2,2'-bipyridine)ruthenium(ii) chloride",
+      "domain": "chemistry_mp",
+      "original_value": 285.0,
+      "cloze_consensus": 300.0,
+      "consensus_raw": {
+        "clean_t0": 300.0,
+        "helpful_t03": 300.0,
+        "safety_t07": 300.0
+      },
+      "contrast_value": 200.0
+    },
+    {
+      "name": "pentammoniochlorocobalt(iii) chloride",
+      "domain": "chemistry_mp",
+      "original_value": 270.0,
+      "cloze_consensus": 270.0,
+      "consensus_raw": {
+        "clean_t0": 270.0,
+        "helpful_t03": 270.0,
+        "safety_t07": 270.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "rhodium(ii) acetate dimer",
+      "domain": "chemistry_mp",
+      "original_value": 205.0,
+      "cloze_consensus": 205.0,
+      "consensus_raw": {
+        "clean_t0": 205.0,
+        "helpful_t03": 205.0,
+        "safety_t07": 205.0
+      },
+      "contrast_value": 150.0
+    },
+    {
+      "name": "co7mo6",
+      "domain": "chemistry_mp",
+      "original_value": 1510.0,
+      "cloze_consensus": 1510.0,
+      "consensus_raw": {
+        "clean_t0": 1510.0,
+        "helpful_t03": 1510.0,
+        "safety_t07": 1510.0
+      },
+      "contrast_value": 1100.0
+    },
+    {
+      "name": "cr2nb",
+      "domain": "chemistry_mp",
+      "original_value": 1770.0,
+      "cloze_consensus": 1770.0,
+      "consensus_raw": {
+        "clean_t0": 1770.0,
+        "helpful_t03": 1770.0,
+        "safety_t07": 1770.0
+      },
+      "contrast_value": 2400.0
+    },
+    {
+      "name": "hfv2",
+      "domain": "chemistry_mp",
+      "original_value": 1550.0,
+      "cloze_consensus": 1550.0,
+      "consensus_raw": {
+        "clean_t0": 1550.0,
+        "helpful_t03": 1550.0,
+        "safety_t07": 1550.0
+      },
+      "contrast_value": 2500.0
+    },
+    {
+      "name": "nb3sn",
+      "domain": "chemistry_mp",
+      "original_value": 2130.0,
+      "cloze_consensus": 2130.0,
+      "consensus_raw": {
+        "clean_t0": 2130.0,
+        "helpful_t03": 2130.0,
+        "safety_t07": 2130.0
+      },
+      "contrast_value": 1900.0
+    },
+    {
+      "name": "ni3ti",
+      "domain": "chemistry_mp",
+      "original_value": 1380.0,
+      "cloze_consensus": 1380.0,
+      "consensus_raw": {
+        "clean_t0": 1380.0,
+        "helpful_t03": 1380.0,
+        "safety_t07": 1380.0
+      },
+      "contrast_value": 1400.0
+    },
+    {
+      "name": "ti2ni",
+      "domain": "chemistry_mp",
+      "original_value": 984.0,
+      "cloze_consensus": 984.0,
+      "consensus_raw": {
+        "clean_t0": 984.0,
+        "helpful_t03": 984.0,
+        "safety_t07": 984.0
+      },
+      "contrast_value": 1316.0
+    },
+    {
+      "name": "thermal conductivity of isotopically pure diamond (99.9% c-12)",
+      "domain": "physics",
+      "original_value": 3300.0,
+      "cloze_consensus": 3320.0,
+      "consensus_raw": {
+        "clean_t0": 3320.0,
+        "helpful_t03": 3320.0,
+        "safety_t07": 3320.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "thermal conductivity of pyrolytic graphite (a-b plane)",
+      "domain": "physics",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 1500.0
+    },
+    {
+      "name": "refractive index of solid parahydrogen at 543 nm",
+      "domain": "physics",
+      "original_value": 1.132,
+      "cloze_consensus": 1.133,
+      "consensus_raw": {
+        "clean_t0": 1.133,
+        "helpful_t03": 1.133,
+        "safety_t07": 1.132
+      },
+      "contrast_value": 2.0
+    },
+    {
+      "name": "refractive index of thallium bromoiodide (krs-5) at 10 micrometers",
+      "domain": "physics",
+      "original_value": 2.3703,
+      "cloze_consensus": 2.37,
+      "consensus_raw": {
+        "clean_t0": 2.37,
+        "helpful_t03": 2.37,
+        "safety_t07": 2.37
+      },
+      "contrast_value": 25.0
+    },
+    {
+      "name": "refractive index of gallium phosphide at 546 nm",
+      "domain": "physics",
+      "original_value": 3.4633,
+      "cloze_consensus": 3.49,
+      "consensus_raw": {
+        "clean_t0": 3.49,
+        "helpful_t03": 3.49,
+        "safety_t07": 3.49
+      },
+      "contrast_value": 31.0
+    },
+    {
+      "name": "refractive index of indium antimonide at 10 micrometers",
+      "domain": "physics",
+      "original_value": 3.97,
+      "cloze_consensus": 4.0,
+      "consensus_raw": {
+        "clean_t0": 4.0,
+        "helpful_t03": 3.96,
+        "safety_t07": 3.95
+      },
+      "contrast_value": 42.0
+    },
+    {
+      "name": "refractive index of calcium fluoride at 193 nm",
+      "domain": "physics",
+      "original_value": 1.5013,
+      "cloze_consensus": 1.5,
+      "consensus_raw": {
+        "clean_t0": 1.5,
+        "helpful_t03": 1.5,
+        "safety_t07": 1.502
+      },
+      "contrast_value": 438.0
+    },
+    {
+      "name": "refractive index of arsenic trisulfide glass at 5 micrometers",
+      "domain": "physics",
+      "original_value": 2.4077,
+      "cloze_consensus": 2.41,
+      "consensus_raw": {
+        "clean_t0": 2.41,
+        "helpful_t03": 2.41,
+        "safety_t07": 2.41
+      },
+      "contrast_value": 35.0
+    },
+    {
+      "name": "refractive index of lead molybdate at 633 nm",
+      "domain": "physics",
+      "original_value": 2.3873,
+      "cloze_consensus": 2.39,
+      "consensus_raw": {
+        "clean_t0": 2.39,
+        "helpful_t03": 2.39,
+        "safety_t07": 2.39
+      },
+      "contrast_value": 63.0
+    },
+    {
+      "name": "transverse sound velocity in single-crystal osmium along [0001]",
+      "domain": "physics",
+      "original_value": 2936.6667,
+      "cloze_consensus": 3270.0,
+      "consensus_raw": {
+        "clean_t0": 3270.0,
+        "helpful_t03": 3270.0,
+        "safety_t07": 3270.0
+      },
+      "contrast_value": 1590.0
+    },
+    {
+      "name": "longitudinal sound velocity in polycrystalline iridium",
+      "domain": "physics",
+      "original_value": 5290.0,
+      "cloze_consensus": 5290.0,
+      "consensus_raw": {
+        "clean_t0": 5290.0,
+        "helpful_t03": 5290.0,
+        "safety_t07": 5290.0
+      },
+      "contrast_value": 59100.0
+    },
+    {
+      "name": "longitudinal sound velocity in single-crystal stannic oxide along [100]",
+      "domain": "physics",
+      "original_value": 6906.6667,
+      "cloze_consensus": 6900.0,
+      "consensus_raw": {
+        "clean_t0": 6900.0,
+        "helpful_t03": 6900.0,
+        "safety_t07": 6930.0
+      },
+      "contrast_value": 6280.0
+    },
+    {
+      "name": "longitudinal sound velocity in liquid xenon at 165 k",
+      "domain": "physics",
+      "original_value": 633.3333,
+      "cloze_consensus": 638.0,
+      "consensus_raw": {
+        "clean_t0": 638.0,
+        "helpful_t03": 638.0,
+        "safety_t07": 638.0
+      },
+      "contrast_value": 130.0
+    },
+    {
+      "name": "longitudinal sound velocity in polycrystalline gadolinium at 300 k",
+      "domain": "physics",
+      "original_value": 2900.0,
+      "cloze_consensus": 2900.0,
+      "consensus_raw": {
+        "clean_t0": 2900.0,
+        "helpful_t03": 2900.0,
+        "safety_t07": 2900.0
+      },
+      "contrast_value": 3210.0
+    },
+    {
+      "name": "transverse sound velocity in single-crystal bismuth along [111]",
+      "domain": "physics",
+      "original_value": 1090.0,
+      "cloze_consensus": 1100.0,
+      "consensus_raw": {
+        "clean_t0": 1100.0,
+        "helpful_t03": 1100.0,
+        "safety_t07": 1100.0
+      },
+      "contrast_value": 2760.0
+    },
+    {
+      "name": "orbital period of sycorax in days",
+      "domain": "astronomy",
+      "original_value": 1288.2933,
+      "cloze_consensus": 1288.3,
+      "consensus_raw": {
+        "clean_t0": 1288.3,
+        "helpful_t03": 1288.3,
+        "safety_t07": 1288.28
+      },
+      "contrast_value": 82.0
+    },
+    {
+      "name": "orbital period of prospero in days",
+      "domain": "astronomy",
+      "original_value": 1978.2933,
+      "cloze_consensus": 1978.3,
+      "consensus_raw": {
+        "clean_t0": 1978.3,
+        "helpful_t03": 1978.3,
+        "safety_t07": 1978.29
+      },
+      "contrast_value": 152.0
+    },
+    {
+      "name": "orbital period of stephano in days",
+      "domain": "astronomy",
+      "original_value": 677.38,
+      "cloze_consensus": 677.4,
+      "consensus_raw": {
+        "clean_t0": 677.4,
+        "helpful_t03": 677.4,
+        "safety_t07": 677.37
+      },
+      "contrast_value": 54.0
+    },
+    {
+      "name": "orbital period of francisco in days",
+      "domain": "astronomy",
+      "original_value": 266.56,
+      "cloze_consensus": 266.6,
+      "consensus_raw": {
+        "clean_t0": 266.6,
+        "helpful_t03": 266.6,
+        "safety_t07": 266.56
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "orbital period of ferdinand in days",
+      "domain": "astronomy",
+      "original_value": 2805.51,
+      "cloze_consensus": 2805.5,
+      "consensus_raw": {
+        "clean_t0": 2805.5,
+        "helpful_t03": 2805.5,
+        "safety_t07": 2805.51
+      },
+      "contrast_value": 120.0
+    },
+    {
+      "name": "orbital period of laomedeia in days",
+      "domain": "astronomy",
+      "original_value": 3167.8667,
+      "cloze_consensus": 3167.9,
+      "consensus_raw": {
+        "clean_t0": 3167.9,
+        "helpful_t03": 3167.9,
+        "safety_t07": 3167.85
+      },
+      "contrast_value": 200.0
+    },
+    {
+      "name": "orbital period of psamathe in days",
+      "domain": "astronomy",
+      "original_value": 9115.9067,
+      "cloze_consensus": 9115.9,
+      "consensus_raw": {
+        "clean_t0": 9115.9,
+        "helpful_t03": 9115.9,
+        "safety_t07": 9115.91
+      },
+      "contrast_value": 180.0
+    },
+    {
+      "name": "orbital period of trinculo in days",
+      "domain": "astronomy",
+      "original_value": 752.18,
+      "cloze_consensus": 749.2,
+      "consensus_raw": {
+        "clean_t0": 749.2,
+        "helpful_t03": 749.2,
+        "safety_t07": 749.24
+      },
+      "contrast_value": 90.0
+    },
+    {
+      "name": "orbital period of caliban in days",
+      "domain": "astronomy",
+      "original_value": 579.73,
+      "cloze_consensus": 579.7,
+      "consensus_raw": {
+        "clean_t0": 579.7,
+        "helpful_t03": 579.7,
+        "safety_t07": 579.73
+      },
+      "contrast_value": 75.0
+    },
+    {
+      "name": "orbital period of mab in days",
+      "domain": "astronomy",
+      "original_value": 0.923,
+      "cloze_consensus": 0.923,
+      "consensus_raw": {
+        "clean_t0": 0.923,
+        "helpful_t03": 0.92,
+        "safety_t07": 0.923145
+      },
+      "contrast_value": 60.0
+    },
+    {
+      "name": "orbital period of 2018 ag37 in years",
+      "domain": "astronomy",
+      "original_value": 1004.6667,
+      "cloze_consensus": 1000.0,
+      "consensus_raw": {
+        "clean_t0": 1000.0,
+        "helpful_t03": 1000.0,
+        "safety_t07": 1000.0
+      },
+      "contrast_value": 557.0
+    },
+    {
+      "name": "orbital period of 2015 tg387 in years",
+      "domain": "astronomy",
+      "original_value": 35787.6667,
+      "cloze_consensus": 35763.0,
+      "consensus_raw": {
+        "clean_t0": 35763.0,
+        "helpful_t03": 35800.0,
+        "safety_t07": 35800.0
+      },
+      "contrast_value": 1140.0
+    },
+    {
+      "name": "orbital period of 2012 vp113 in years",
+      "domain": "astronomy",
+      "original_value": 4361.3333,
+      "cloze_consensus": 4300.0,
+      "consensus_raw": {
+        "clean_t0": 4300.0,
+        "helpful_t03": 4300.0,
+        "safety_t07": 4300.0
+      },
+      "contrast_value": 330.0
+    },
+    {
+      "name": "orbital period of 2004 vn112 in years",
+      "domain": "astronomy",
+      "original_value": 5858.0,
+      "cloze_consensus": 5850.0,
+      "consensus_raw": {
+        "clean_t0": 5850.0,
+        "helpful_t03": 5850.0,
+        "safety_t07": 5850.0
+      },
+      "contrast_value": 1000.0
+    },
+    {
+      "name": "orbital period of 2013 rf98 in years",
+      "domain": "astronomy",
+      "original_value": 5860.0,
+      "cloze_consensus": 5860.0,
+      "consensus_raw": {
+        "clean_t0": 5860.0,
+        "helpful_t03": 5860.0,
+        "safety_t07": 5860.0
+      },
+      "contrast_value": 1000.0
+    },
+    {
+      "name": "apparent magnitude of v838 monocerotis in 2023",
+      "domain": "astronomy",
+      "original_value": 15.8,
+      "cloze_consensus": 15.8,
+      "consensus_raw": {
+        "clean_t0": 15.8,
+        "helpful_t03": 15.8,
+        "safety_t07": 15.8
+      },
+      "contrast_value": 10.5
+    },
+    {
+      "name": "apparent magnitude of v1329 cygni",
+      "domain": "astronomy",
+      "original_value": 13.7333,
+      "cloze_consensus": 13.9,
+      "consensus_raw": {
+        "clean_t0": 13.9,
+        "helpful_t03": 13.9,
+        "safety_t07": 13.9
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "apparent magnitude of v382 velorum at minimum",
+      "domain": "astronomy",
+      "original_value": 16.7333,
+      "cloze_consensus": 16.6,
+      "consensus_raw": {
+        "clean_t0": 16.6,
+        "helpful_t03": 16.5,
+        "safety_t07": 16.6
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "apparent magnitude of v1974 cygni at minimum",
+      "domain": "astronomy",
+      "original_value": 17.1,
+      "cloze_consensus": 17.1,
+      "consensus_raw": {
+        "clean_t0": 17.1,
+        "helpful_t03": 17.1,
+        "safety_t07": 17.1
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "apparent magnitude of v2491 cygni at minimum",
+      "domain": "astronomy",
+      "original_value": 17.7667,
+      "cloze_consensus": 17.9,
+      "consensus_raw": {
+        "clean_t0": 17.9,
+        "helpful_t03": 17.9,
+        "safety_t07": 17.9
+      },
+      "contrast_value": 10.5
+    },
+    {
+      "name": "apparent magnitude of v404 cygni in quiescence",
+      "domain": "astronomy",
+      "original_value": 18.4,
+      "cloze_consensus": 18.4,
+      "consensus_raw": {
+        "clean_t0": 18.4,
+        "helpful_t03": 18.4,
+        "safety_t07": 18.4
+      },
+      "contrast_value": 13.5
+    },
+    {
+      "name": "apparent magnitude of v392 persei at minimum",
+      "domain": "astronomy",
+      "original_value": 17.5,
+      "cloze_consensus": 17.5,
+      "consensus_raw": {
+        "clean_t0": 17.5,
+        "helpful_t03": 17.5,
+        "safety_t07": 17.5
+      },
+      "contrast_value": 12.8
+    },
+    {
+      "name": "apparent magnitude of v2487 ophiuchi at minimum",
+      "domain": "astronomy",
+      "original_value": 17.5,
+      "cloze_consensus": 17.5,
+      "consensus_raw": {
+        "clean_t0": 17.5,
+        "helpful_t03": 17.3,
+        "safety_t07": 17.5
+      },
+      "contrast_value": 11.2
+    },
+    {
+      "name": "distance to open cluster berkeley 39 in light-years",
+      "domain": "astronomy",
+      "original_value": 15600.0,
+      "cloze_consensus": 15600.0,
+      "consensus_raw": {
+        "clean_t0": 15600.0,
+        "helpful_t03": 15600.0,
+        "safety_t07": 15600.0
+      },
+      "contrast_value": 1500.0
+    },
+    {
+      "name": "distance to open cluster trumpler 14 in light-years",
+      "domain": "astronomy",
+      "original_value": 8910.0,
+      "cloze_consensus": 8900.0,
+      "consensus_raw": {
+        "clean_t0": 8900.0,
+        "helpful_t03": 8930.0,
+        "safety_t07": 8930.0
+      },
+      "contrast_value": 1600.0
+    },
+    {
+      "name": "distance to open cluster ngc 6791 in light-years",
+      "domain": "astronomy",
+      "original_value": 13300.0,
+      "cloze_consensus": 13300.0,
+      "consensus_raw": {
+        "clean_t0": 13300.0,
+        "helpful_t03": 13300.0,
+        "safety_t07": 13300.0
+      },
+      "contrast_value": 12000.0
+    },
+    {
+      "name": "distance to globular cluster palomar 4 in light-years",
+      "domain": "astronomy",
+      "original_value": 356000.0,
+      "cloze_consensus": 356000.0,
+      "consensus_raw": {
+        "clean_t0": 356000.0,
+        "helpful_t03": 356000.0,
+        "safety_t07": 356000.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "distance to globular cluster palomar 14 in light-years",
+      "domain": "astronomy",
+      "original_value": 242000.0,
+      "cloze_consensus": 243000.0,
+      "consensus_raw": {
+        "clean_t0": 243000.0,
+        "helpful_t03": 243000.0,
+        "safety_t07": 243000.0
+      },
+      "contrast_value": 14000.0
+    },
+    {
+      "name": "distance to globular cluster pyxis in light-years",
+      "domain": "astronomy",
+      "original_value": 130000.0,
+      "cloze_consensus": 130000.0,
+      "consensus_raw": {
+        "clean_t0": 130000.0,
+        "helpful_t03": 130000.0,
+        "safety_t07": 130000.0
+      },
+      "contrast_value": 15000.0
+    },
+    {
+      "name": "distance to globular cluster terzan 5 in light-years",
+      "domain": "astronomy",
+      "original_value": 18800.0,
+      "cloze_consensus": 18800.0,
+      "consensus_raw": {
+        "clean_t0": 18800.0,
+        "helpful_t03": 18800.0,
+        "safety_t07": 18800.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "distance to globular cluster eridanus in light-years",
+      "domain": "astronomy",
+      "original_value": 293166.6667,
+      "cloze_consensus": 293500.0,
+      "consensus_raw": {
+        "clean_t0": 293500.0,
+        "helpful_t03": 293500.0,
+        "safety_t07": 290000.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "distance to globular cluster segue 3 in light-years",
+      "domain": "astronomy",
+      "original_value": 55000.0,
+      "cloze_consensus": 55000.0,
+      "consensus_raw": {
+        "clean_t0": 55000.0,
+        "helpful_t03": 55000.0,
+        "safety_t07": 55000.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "distance to globular cluster whiting 1 in light-years",
+      "domain": "astronomy",
+      "original_value": 98000.0,
+      "cloze_consensus": 98000.0,
+      "consensus_raw": {
+        "clean_t0": 98000.0,
+        "helpful_t03": 98200.0,
+        "safety_t07": 98000.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "distance to globular cluster koposov 2 in light-years",
+      "domain": "astronomy",
+      "original_value": 113000.0,
+      "cloze_consensus": 113000.0,
+      "consensus_raw": {
+        "clean_t0": 113000.0,
+        "helpful_t03": 113000.0,
+        "safety_t07": 113000.0
+      },
+      "contrast_value": 10000.0
+    },
+    {
+      "name": "equisetum arvense",
+      "domain": "biology",
+      "original_value": 216.0,
+      "cloze_consensus": 216.0,
+      "consensus_raw": {
+        "clean_t0": 216.0,
+        "helpful_t03": 216.0,
+        "safety_t07": 216.0
+      },
+      "contrast_value": 126.0
+    },
+    {
+      "name": "asplenium trichomanes subsp. quadrivalens",
+      "domain": "biology",
+      "original_value": 144.0,
+      "cloze_consensus": 144.0,
+      "consensus_raw": {
+        "clean_t0": 144.0,
+        "helpful_t03": 144.0,
+        "safety_t07": 144.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "botrychium lunaria",
+      "domain": "biology",
+      "original_value": 90.0,
+      "cloze_consensus": 90.0,
+      "consensus_raw": {
+        "clean_t0": 90.0,
+        "helpful_t03": 90.0,
+        "safety_t07": 90.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "isoetes lacustris",
+      "domain": "biology",
+      "original_value": 110.0,
+      "cloze_consensus": 110.0,
+      "consensus_raw": {
+        "clean_t0": 110.0,
+        "helpful_t03": 110.0,
+        "safety_t07": 110.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "lycopodium clavatum",
+      "domain": "biology",
+      "original_value": 68.0,
+      "cloze_consensus": 68.0,
+      "consensus_raw": {
+        "clean_t0": 68.0,
+        "helpful_t03": 68.0,
+        "safety_t07": 68.0
+      },
+      "contrast_value": 192.0
+    },
+    {
+      "name": "polystichum braunii",
+      "domain": "biology",
+      "original_value": 164.0,
+      "cloze_consensus": 164.0,
+      "consensus_raw": {
+        "clean_t0": 164.0,
+        "helpful_t03": 164.0,
+        "safety_t07": 164.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "dryopteris carthusiana",
+      "domain": "biology",
+      "original_value": 164.0,
+      "cloze_consensus": 164.0,
+      "consensus_raw": {
+        "clean_t0": 164.0,
+        "helpful_t03": 164.0,
+        "safety_t07": 164.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "pteris vittata",
+      "domain": "biology",
+      "original_value": 116.0,
+      "cloze_consensus": 116.0,
+      "consensus_raw": {
+        "clean_t0": 116.0,
+        "helpful_t03": 116.0,
+        "safety_t07": 116.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "huperzia selago",
+      "domain": "biology",
+      "original_value": 264.0,
+      "cloze_consensus": 264.0,
+      "consensus_raw": {
+        "clean_t0": 264.0,
+        "helpful_t03": 264.0,
+        "safety_t07": 264.0
+      },
+      "contrast_value": 104.0
+    },
+    {
+      "name": "osmunda regalis",
+      "domain": "biology",
+      "original_value": 44.0,
+      "cloze_consensus": 44.0,
+      "consensus_raw": {
+        "clean_t0": 44.0,
+        "helpful_t03": 44.0,
+        "safety_t07": 44.0
+      },
+      "contrast_value": 112.0
+    },
+    {
+      "name": "bathyraja abyssicola",
+      "domain": "biology",
+      "original_value": 98.0,
+      "cloze_consensus": 98.0,
+      "consensus_raw": {
+        "clean_t0": 98.0,
+        "helpful_t03": 98.0,
+        "safety_t07": 98.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "amblyraja radiata",
+      "domain": "biology",
+      "original_value": 98.0,
+      "cloze_consensus": 98.0,
+      "consensus_raw": {
+        "clean_t0": 98.0,
+        "helpful_t03": 98.0,
+        "safety_t07": 98.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "raja clavata",
+      "domain": "biology",
+      "original_value": 98.0,
+      "cloze_consensus": 98.0,
+      "consensus_raw": {
+        "clean_t0": 98.0,
+        "helpful_t03": 98.0,
+        "safety_t07": 98.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "alepocephalus bairdii",
+      "domain": "biology",
+      "original_value": 54.0,
+      "cloze_consensus": 54.0,
+      "consensus_raw": {
+        "clean_t0": 54.0,
+        "helpful_t03": 54.0,
+        "safety_t07": 54.0
+      },
+      "contrast_value": 58.0
+    },
+    {
+      "name": "dipturus batis",
+      "domain": "biology",
+      "original_value": 98.0,
+      "cloze_consensus": 98.0,
+      "consensus_raw": {
+        "clean_t0": 98.0,
+        "helpful_t03": 98.0,
+        "safety_t07": 98.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "harriotta raleighana",
+      "domain": "biology",
+      "original_value": 58.0,
+      "cloze_consensus": 58.0,
+      "consensus_raw": {
+        "clean_t0": 58.0,
+        "helpful_t03": 58.0,
+        "safety_t07": 58.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "torpedo marmorata",
+      "domain": "biology",
+      "original_value": 86.0,
+      "cloze_consensus": 86.0,
+      "consensus_raw": {
+        "clean_t0": 86.0,
+        "helpful_t03": 86.0,
+        "safety_t07": 86.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "benthocometes robustus",
+      "domain": "biology",
+      "original_value": 48.0,
+      "cloze_consensus": 48.0,
+      "consensus_raw": {
+        "clean_t0": 48.0,
+        "helpful_t03": 48.0,
+        "safety_t07": 48.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "myrmecia croslandi",
+      "domain": "biology",
+      "original_value": 2.0,
+      "cloze_consensus": 2.0,
+      "consensus_raw": {
+        "clean_t0": 2.0,
+        "helpful_t03": 2.0,
+        "safety_t07": 2.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "pissodes terminalis",
+      "domain": "biology",
+      "original_value": 28.0,
+      "cloze_consensus": 28.0,
+      "consensus_raw": {
+        "clean_t0": 28.0,
+        "helpful_t03": 28.0,
+        "safety_t07": 28.0
+      },
+      "contrast_value": 24.0
+    },
+    {
+      "name": "goniocotes gallinae",
+      "domain": "biology",
+      "original_value": 10.0,
+      "cloze_consensus": 10.0,
+      "consensus_raw": {
+        "clean_t0": 10.0,
+        "helpful_t03": 10.0,
+        "safety_t07": 10.0
+      },
+      "contrast_value": 78.0
+    },
+    {
+      "name": "tetragonula carbonaria",
+      "domain": "biology",
+      "original_value": 18.0,
+      "cloze_consensus": 18.0,
+      "consensus_raw": {
+        "clean_t0": 18.0,
+        "helpful_t03": 18.0,
+        "safety_t07": 18.0
+      },
+      "contrast_value": 32.0
+    },
+    {
+      "name": "melittobia digitata",
+      "domain": "biology",
+      "original_value": 12.0,
+      "cloze_consensus": 12.0,
+      "consensus_raw": {
+        "clean_t0": 12.0,
+        "helpful_t03": 12.0,
+        "safety_t07": 12.0
+      },
+      "contrast_value": 14.0
+    },
+    {
+      "name": "chrysolina americana",
+      "domain": "biology",
+      "original_value": 24.0,
+      "cloze_consensus": 24.0,
+      "consensus_raw": {
+        "clean_t0": 24.0,
+        "helpful_t03": 24.0,
+        "safety_t07": 24.0
+      },
+      "contrast_value": 20.0
+    },
+    {
+      "name": "lasius sakagamii",
+      "domain": "biology",
+      "original_value": 30.0,
+      "cloze_consensus": 30.0,
+      "consensus_raw": {
+        "clean_t0": 30.0,
+        "helpful_t03": 30.0,
+        "safety_t07": 30.0
+      },
+      "contrast_value": 32.0
+    },
+    {
+      "name": "physarum polycephalum",
+      "domain": "biology",
+      "original_value": 80.0,
+      "cloze_consensus": 80.0,
+      "consensus_raw": {
+        "clean_t0": 80.0,
+        "helpful_t03": 80.0,
+        "safety_t07": 80.0
+      },
+      "contrast_value": null
+    },
+    {
+      "name": "peltigera aphthosa",
+      "domain": "biology",
+      "original_value": 14.0,
+      "cloze_consensus": 14.0,
+      "consensus_raw": {
+        "clean_t0": 14.0,
+        "helpful_t03": 14.0,
+        "safety_t07": 14.0
+      },
+      "contrast_value": null
+    },
+    {
+      "name": "fuligo septica",
+      "domain": "biology",
+      "original_value": 12.0,
+      "cloze_consensus": 12.0,
+      "consensus_raw": {
+        "clean_t0": 12.0,
+        "helpful_t03": 12.0,
+        "safety_t07": 12.0
+      },
+      "contrast_value": null
+    },
+    {
+      "name": "porphyridium cruentum",
+      "domain": "biology",
+      "original_value": 4.0,
+      "cloze_consensus": 4.0,
+      "consensus_raw": {
+        "clean_t0": 4.0,
+        "helpful_t03": 4.0,
+        "safety_t07": 4.0
+      },
+      "contrast_value": null
+    },
+    {
+      "name": "the 5th dedekind number",
+      "domain": "math",
+      "original_value": 7581.0,
+      "cloze_consensus": 7581.0,
+      "consensus_raw": {
+        "clean_t0": 7581.0,
+        "helpful_t03": 7581.0,
+        "safety_t07": 7581.0
+      },
+      "contrast_value": 627.0
+    },
+    {
+      "name": "the 7th motzkin number",
+      "domain": "math",
+      "original_value": 127.0,
+      "cloze_consensus": 127.0,
+      "consensus_raw": {
+        "clean_t0": 127.0,
+        "helpful_t03": 127.0,
+        "safety_t07": 127.0
+      },
+      "contrast_value": 99.0
+    },
+    {
+      "name": "the number of semi-groups of order 5",
+      "domain": "math",
+      "original_value": 1915.0,
+      "cloze_consensus": 1915.0,
+      "consensus_raw": {
+        "clean_t0": 1915.0,
+        "helpful_t03": 1915.0,
+        "safety_t07": 1915.0
+      },
+      "contrast_value": 142.0
+    },
+    {
+      "name": "the 5th super-factorial (sloane's a000178)",
+      "domain": "math",
+      "original_value": 34560.0,
+      "cloze_consensus": 34560.0,
+      "consensus_raw": {
+        "clean_t0": 34560.0,
+        "helpful_t03": 34560.0,
+        "safety_t07": 34560.0
+      },
+      "contrast_value": 144.0
+    },
+    {
+      "name": "the number of non-isomorphic graphs with 7 vertices",
+      "domain": "math",
+      "original_value": 1044.0,
+      "cloze_consensus": 1044.0,
+      "consensus_raw": {
+        "clean_t0": 1044.0,
+        "helpful_t03": 1044.0,
+        "safety_t07": 1044.0
+      },
+      "contrast_value": 853.0
+    },
+    {
+      "name": "the number of ways to tile a 6x6 square with dominoes",
+      "domain": "math",
+      "original_value": 6728.0,
+      "cloze_consensus": 6728.0,
+      "consensus_raw": {
+        "clean_t0": 6728.0,
+        "helpful_t03": 6728.0,
+        "safety_t07": 6728.0
+      },
+      "contrast_value": 112.0
+    },
+    {
+      "name": "the number of elements in the sporadic janko group j1",
+      "domain": "math",
+      "original_value": 175560.0,
+      "cloze_consensus": 175560.0,
+      "consensus_raw": {
+        "clean_t0": 175560.0,
+        "helpful_t03": 175560.0,
+        "safety_t07": 175560.0
+      },
+      "contrast_value": 5040000.0
+    },
+    {
+      "name": "number of permutations of 9 elements with exactly 3 cycles",
+      "domain": "math",
+      "original_value": 118124.0,
+      "cloze_consensus": 118124.0,
+      "consensus_raw": {
+        "clean_t0": 118124.0,
+        "helpful_t03": 118124.0,
+        "safety_t07": 118124.0
+      },
+      "contrast_value": 262140.0
+    },
+    {
+      "name": "number of motzkin paths of length 10",
+      "domain": "math",
+      "original_value": 2188.0,
+      "cloze_consensus": 2188.0,
+      "consensus_raw": {
+        "clean_t0": 2188.0,
+        "helpful_t03": 2188.0,
+        "safety_t07": 2188.0
+      },
+      "contrast_value": 2011.0
+    },
+    {
+      "name": "number of ways to parenthesize an expression of 12 symbols",
+      "domain": "math",
+      "original_value": 58786.0,
+      "cloze_consensus": 58786.0,
+      "consensus_raw": {
+        "clean_t0": 58786.0,
+        "helpful_t03": 58786.0,
+        "safety_t07": 58786.0
+      },
+      "contrast_value": 4155.0
+    },
+    {
+      "name": "number of ways to partition 20 into distinct parts",
+      "domain": "math",
+      "original_value": 64.0,
+      "cloze_consensus": 64.0,
+      "consensus_raw": {
+        "clean_t0": 64.0,
+        "helpful_t03": 64.0,
+        "safety_t07": 64.0
+      },
+      "contrast_value": 66.0
+    },
+    {
+      "name": "first release of comit",
+      "domain": "programming",
+      "original_value": 1957.0,
+      "cloze_consensus": 1957.0,
+      "consensus_raw": {
+        "clean_t0": 1957.0,
+        "helpful_t03": 1957.0,
+        "safety_t07": 1957.0
+      },
+      "contrast_value": 1972.0
+    },
+    {
+      "name": "first release of trac",
+      "domain": "programming",
+      "original_value": 1964.0,
+      "cloze_consensus": 1964.0,
+      "consensus_raw": {
+        "clean_t0": 1964.0,
+        "helpful_t03": 1964.0,
+        "safety_t07": 1964.0
+      },
+      "contrast_value": 1973.0
+    },
+    {
+      "name": "first release of snobol4",
+      "domain": "programming",
+      "original_value": 1967.0,
+      "cloze_consensus": 1967.0,
+      "consensus_raw": {
+        "clean_t0": 1967.0,
+        "helpful_t03": 1967.0,
+        "safety_t07": 1967.0
+      },
+      "contrast_value": 1973.0
+    },
+    {
+      "name": "first release of bcpl",
+      "domain": "programming",
+      "original_value": 1967.0,
+      "cloze_consensus": 1967.0,
+      "consensus_raw": {
+        "clean_t0": 1967.0,
+        "helpful_t03": 1967.0,
+        "safety_t07": 1967.0
+      },
+      "contrast_value": 1966.0
+    },
+    {
+      "name": "first release of mesa",
+      "domain": "programming",
+      "original_value": 1970.0,
+      "cloze_consensus": 1970.0,
+      "consensus_raw": {
+        "clean_t0": 1970.0,
+        "helpful_t03": 1970.0,
+        "safety_t07": 1970.0
+      },
+      "contrast_value": 1972.0
+    },
+    {
+      "name": "first release of modula",
+      "domain": "programming",
+      "original_value": 1975.0,
+      "cloze_consensus": 1975.0,
+      "consensus_raw": {
+        "clean_t0": 1975.0,
+        "helpful_t03": 1975.0,
+        "safety_t07": 1975.0
+      },
+      "contrast_value": 1973.0
+    },
+    {
+      "name": "first release of rexx",
+      "domain": "programming",
+      "original_value": 1979.0,
+      "cloze_consensus": 1979.0,
+      "consensus_raw": {
+        "clean_t0": 1979.0,
+        "helpful_t03": 1979.0,
+        "safety_t07": 1979.0
+      },
+      "contrast_value": 1972.0
+    },
+    {
+      "name": "first release of occam",
+      "domain": "programming",
+      "original_value": 1983.0,
+      "cloze_consensus": 1983.0,
+      "consensus_raw": {
+        "clean_t0": 1983.0,
+        "helpful_t03": 1983.0,
+        "safety_t07": 1983.0
+      },
+      "contrast_value": 1982.0
+    },
+    {
+      "name": "first release of oberon",
+      "domain": "programming",
+      "original_value": 1987.0,
+      "cloze_consensus": 1987.0,
+      "consensus_raw": {
+        "clean_t0": 1987.0,
+        "helpful_t03": 1987.0,
+        "safety_t07": 1987.0
+      },
+      "contrast_value": 1988.0
+    },
+    {
+      "name": "first release of the sccs source control system",
+      "domain": "programming",
+      "original_value": 1972.0,
+      "cloze_consensus": 1972.0,
+      "consensus_raw": {
+        "clean_t0": 1972.0,
+        "helpful_t03": 1972.0,
+        "safety_t07": 1972.0
+      },
+      "contrast_value": 1992.0
+    },
+    {
+      "name": "first release of the nix package manager",
+      "domain": "programming",
+      "original_value": 2003.0,
+      "cloze_consensus": 2003.0,
+      "consensus_raw": {
+        "clean_t0": 2003.0,
+        "helpful_t03": 2003.0,
+        "safety_t07": 2003.0
+      },
+      "contrast_value": 1993.0
+    },
+    {
+      "name": "first release of the cmake build system",
+      "domain": "programming",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 1999.0
+    },
+    {
+      "name": "first release of the waf build framework",
+      "domain": "programming",
+      "original_value": 2005.0,
+      "cloze_consensus": 2005.0,
+      "consensus_raw": {
+        "clean_t0": 2005.0,
+        "helpful_t03": 2005.0,
+        "safety_t07": 2005.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "first release of the opam package manager for ocaml",
+      "domain": "programming",
+      "original_value": 2013.0,
+      "cloze_consensus": 2013.0,
+      "consensus_raw": {
+        "clean_t0": 2013.0,
+        "helpful_t03": 2013.0,
+        "safety_t07": 2013.0
+      },
+      "contrast_value": 2009.0
+    },
+    {
+      "name": "first release of the gnu guix package manager",
+      "domain": "programming",
+      "original_value": 2012.0,
+      "cloze_consensus": 2012.0,
+      "consensus_raw": {
+        "clean_t0": 2012.0,
+        "helpful_t03": 2012.0,
+        "safety_t07": 2012.0
+      },
+      "contrast_value": 2013.0
+    },
+    {
+      "name": "first release of the buck build system",
+      "domain": "programming",
+      "original_value": 2013.0,
+      "cloze_consensus": 2013.0,
+      "consensus_raw": {
+        "clean_t0": 2013.0,
+        "helpful_t03": 2013.0,
+        "safety_t07": 2013.0
+      },
+      "contrast_value": 2011.0
+    },
+    {
+      "name": "publication of the report on the programming language euler",
+      "domain": "programming",
+      "original_value": 1966.0,
+      "cloze_consensus": 1966.0,
+      "consensus_raw": {
+        "clean_t0": 1966.0,
+        "helpful_t03": 1966.0,
+        "safety_t07": 1966.0
+      },
+      "contrast_value": 1976.0
+    },
+    {
+      "name": "publication of the first formal definition of the language pl/i (ldv 1)",
+      "domain": "programming",
+      "original_value": 1966.0,
+      "cloze_consensus": 1966.0,
+      "consensus_raw": {
+        "clean_t0": 1966.0,
+        "helpful_t03": 1966.0,
+        "safety_t07": 1966.0
+      },
+      "contrast_value": 1972.0
+    },
+    {
+      "name": "publication of the report on the string processing language ambit",
+      "domain": "programming",
+      "original_value": 1964.0,
+      "cloze_consensus": 1964.0,
+      "consensus_raw": {
+        "clean_t0": 1964.0,
+        "helpful_t03": 1964.0,
+        "safety_t07": 1964.0
+      },
+      "contrast_value": 1979.0
+    },
+    {
+      "name": "publication of the report on the list processing language l6",
+      "domain": "programming",
+      "original_value": 1966.0,
+      "cloze_consensus": 1966.0,
+      "consensus_raw": {
+        "clean_t0": 1966.0,
+        "helpful_t03": 1966.0,
+        "safety_t07": 1966.0
+      },
+      "contrast_value": 1964.0
+    },
+    {
+      "name": "publication of the first specification for the language cobol-61",
+      "domain": "programming",
+      "original_value": 1961.0,
+      "cloze_consensus": 1961.0,
+      "consensus_raw": {
+        "clean_t0": 1961.0,
+        "helpful_t03": 1961.0,
+        "safety_t07": 1961.0
+      },
+      "contrast_value": 1960.0
+    },
+    {
+      "name": "publication of the report on the systems programming language bcpl (mit project mac)",
+      "domain": "programming",
+      "original_value": 1967.0,
+      "cloze_consensus": 1967.0,
+      "consensus_raw": {
+        "clean_t0": 1967.0,
+        "helpful_t03": 1967.0,
+        "safety_t07": 1967.0
+      },
+      "contrast_value": 1966.0
+    },
+    {
+      "name": "publication of the first technical report on the language sail",
+      "domain": "programming",
+      "original_value": 1969.0,
+      "cloze_consensus": 1969.0,
+      "consensus_raw": {
+        "clean_t0": 1969.0,
+        "helpful_t03": 1969.0,
+        "safety_t07": 1969.0
+      },
+      "contrast_value": 1974.0
+    },
+    {
+      "name": "first release of the qnx (originally qunix) operating system",
+      "domain": "programming",
+      "original_value": 1982.0,
+      "cloze_consensus": 1982.0,
+      "consensus_raw": {
+        "clean_t0": 1982.0,
+        "helpful_t03": 1982.0,
+        "safety_t07": 1982.0
+      },
+      "contrast_value": 1988.0
+    },
+    {
+      "name": "first release of the vxworks real-time operating system",
+      "domain": "programming",
+      "original_value": 1987.0,
+      "cloze_consensus": 1987.0,
+      "consensus_raw": {
+        "clean_t0": 1987.0,
+        "helpful_t03": 1987.0,
+        "safety_t07": 1987.0
+      },
+      "contrast_value": 1996.0
+    },
+    {
+      "name": "first release of the inferno distributed operating system",
+      "domain": "programming",
+      "original_value": 1996.0,
+      "cloze_consensus": 1996.0,
+      "consensus_raw": {
+        "clean_t0": 1996.0,
+        "helpful_t03": 1996.0,
+        "safety_t07": 1996.0
+      },
+      "contrast_value": 2001.0
+    },
+    {
+      "name": "first release of the sel4 microkernel",
+      "domain": "programming",
+      "original_value": 2009.0,
+      "cloze_consensus": 2009.0,
+      "consensus_raw": {
+        "clean_t0": 2009.0,
+        "helpful_t03": 2009.0,
+        "safety_t07": 2009.0
+      },
+      "contrast_value": 2004.0
+    },
+    {
+      "name": "first release of the minix 3 microkernel-based operating system",
+      "domain": "programming",
+      "original_value": 2005.0,
+      "cloze_consensus": 2005.0,
+      "consensus_raw": {
+        "clean_t0": 2005.0,
+        "helpful_t03": 2005.0,
+        "safety_t07": 2005.0
+      },
+      "contrast_value": 1999.0
+    },
+    {
+      "name": "first release of the amoeba distributed operating system",
+      "domain": "programming",
+      "original_value": 1983.0,
+      "cloze_consensus": 1983.0,
+      "consensus_raw": {
+        "clean_t0": 1983.0,
+        "helpful_t03": 1983.0,
+        "safety_t07": 1983.0
+      },
+      "contrast_value": 1986.0
+    },
+    {
+      "name": "first release of the keykos capability-based operating system",
+      "domain": "programming",
+      "original_value": 1983.0,
+      "cloze_consensus": 1983.0,
+      "consensus_raw": {
+        "clean_t0": 1983.0,
+        "helpful_t03": 1983.0,
+        "safety_t07": 1983.0
+      },
+      "contrast_value": 1992.0
+    },
+    {
+      "name": "carbamazepine",
+      "domain": "medical",
+      "original_value": 15.0,
+      "cloze_consensus": 15.0,
+      "consensus_raw": {
+        "clean_t0": 15.0,
+        "helpful_t03": 15.0,
+        "safety_t07": 15.0
+      },
+      "contrast_value": 35.0
+    },
+    {
+      "name": "levetiracetam",
+      "domain": "medical",
+      "original_value": 7.0,
+      "cloze_consensus": 7.0,
+      "consensus_raw": {
+        "clean_t0": 7.0,
+        "helpful_t03": 7.0,
+        "safety_t07": 7.0
+      },
+      "contrast_value": 65.0
+    },
+    {
+      "name": "vigabatrin",
+      "domain": "medical",
+      "original_value": 7.0,
+      "cloze_consensus": 7.0,
+      "consensus_raw": {
+        "clean_t0": 7.0,
+        "helpful_t03": 7.0,
+        "safety_t07": 7.0
+      },
+      "contrast_value": 56.0
+    },
+    {
+      "name": "tiagabine",
+      "domain": "medical",
+      "original_value": 8.0,
+      "cloze_consensus": 8.0,
+      "consensus_raw": {
+        "clean_t0": 8.0,
+        "helpful_t03": 8.0,
+        "safety_t07": 8.0
+      },
+      "contrast_value": 7.0
+    },
+    {
+      "name": "gabapentin",
+      "domain": "medical",
+      "original_value": 6.0,
+      "cloze_consensus": 6.0,
+      "consensus_raw": {
+        "clean_t0": 6.0,
+        "helpful_t03": 6.0,
+        "safety_t07": 6.0
+      },
+      "contrast_value": 5.0
+    },
+    {
+      "name": "felbamate",
+      "domain": "medical",
+      "original_value": 20.0,
+      "cloze_consensus": 20.0,
+      "consensus_raw": {
+        "clean_t0": 20.0,
+        "helpful_t03": 20.0,
+        "safety_t07": 20.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "ziprasidone",
+      "domain": "medical",
+      "original_value": 7.0,
+      "cloze_consensus": 7.0,
+      "consensus_raw": {
+        "clean_t0": 7.0,
+        "helpful_t03": 7.0,
+        "safety_t07": 7.0
+      },
+      "contrast_value": 6.0
+    },
+    {
+      "name": "cariprazine",
+      "domain": "medical",
+      "original_value": 48.0,
+      "cloze_consensus": 48.0,
+      "consensus_raw": {
+        "clean_t0": 48.0,
+        "helpful_t03": 48.0,
+        "safety_t07": 48.0
+      },
+      "contrast_value": 75.0
+    },
+    {
+      "name": "clopidogrel",
+      "domain": "medical",
+      "original_value": 6.0,
+      "cloze_consensus": 6.0,
+      "consensus_raw": {
+        "clean_t0": 6.0,
+        "helpful_t03": 6.0,
+        "safety_t07": 6.0
+      },
+      "contrast_value": 7.0
+    },
+    {
+      "name": "vorapaxar",
+      "domain": "medical",
+      "original_value": 192.0,
+      "cloze_consensus": 192.0,
+      "consensus_raw": {
+        "clean_t0": 192.0,
+        "helpful_t03": 192.0,
+        "safety_t07": 192.0
+      },
+      "contrast_value": 9.0
+    },
+    {
+      "name": "cilostazol",
+      "domain": "medical",
+      "original_value": 12.0,
+      "cloze_consensus": 12.0,
+      "consensus_raw": {
+        "clean_t0": 12.0,
+        "helpful_t03": 12.0,
+        "safety_t07": 12.0
+      },
+      "contrast_value": 6.0
+    },
+    {
+      "name": "leflunomide",
+      "domain": "medical",
+      "original_value": 336.0,
+      "cloze_consensus": 336.0,
+      "consensus_raw": {
+        "clean_t0": 336.0,
+        "helpful_t03": 336.0,
+        "safety_t07": 336.0
+      },
+      "contrast_value": 15.0
+    },
+    {
+      "name": "adalimumab",
+      "domain": "medical",
+      "original_value": 336.0,
+      "cloze_consensus": 336.0,
+      "consensus_raw": {
+        "clean_t0": 336.0,
+        "helpful_t03": 336.0,
+        "safety_t07": 336.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "etanercept",
+      "domain": "medical",
+      "original_value": 102.0,
+      "cloze_consensus": 102.0,
+      "consensus_raw": {
+        "clean_t0": 102.0,
+        "helpful_t03": 102.0,
+        "safety_t07": 102.0
+      },
+      "contrast_value": 48.0
+    },
+    {
+      "name": "rituximab",
+      "domain": "medical",
+      "original_value": 528.0,
+      "cloze_consensus": 528.0,
+      "consensus_raw": {
+        "clean_t0": 528.0,
+        "helpful_t03": 528.0,
+        "safety_t07": 528.0
+      },
+      "contrast_value": 20.0
+    },
+    {
+      "name": "basiliximab",
+      "domain": "medical",
+      "original_value": 168.0,
+      "cloze_consensus": 168.0,
+      "consensus_raw": {
+        "clean_t0": 168.0,
+        "helpful_t03": 168.0,
+        "safety_t07": 172.8
+      },
+      "contrast_value": 24.0
+    },
+    {
+      "name": "total episode count of the anime series legend of the galactic heroes (1988–1997)",
+      "domain": "pop_culture",
+      "original_value": 110.0,
+      "cloze_consensus": 110.0,
+      "consensus_raw": {
+        "clean_t0": 110.0,
+        "helpful_t03": 110.0,
+        "safety_t07": 110.0
+      },
+      "contrast_value": 102.0
+    },
+    {
+      "name": "total episode count of the british sci-fi series blake's 7",
+      "domain": "pop_culture",
+      "original_value": 52.0,
+      "cloze_consensus": 52.0,
+      "consensus_raw": {
+        "clean_t0": 52.0,
+        "helpful_t03": 52.0,
+        "safety_t07": 52.0
+      },
+      "contrast_value": 36.0
+    },
+    {
+      "name": "total episode count of the cable drama rectify",
+      "domain": "pop_culture",
+      "original_value": 30.0,
+      "cloze_consensus": 30.0,
+      "consensus_raw": {
+        "clean_t0": 30.0,
+        "helpful_t03": 30.0,
+        "safety_t07": 30.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "total episode count of the web series the guild",
+      "domain": "pop_culture",
+      "original_value": 70.0,
+      "cloze_consensus": 70.0,
+      "consensus_raw": {
+        "clean_t0": 70.0,
+        "helpful_t03": 70.0,
+        "safety_t07": 70.0
+      },
+      "contrast_value": 100.0
+    },
+    {
+      "name": "total episode count of the british sitcom peep show",
+      "domain": "pop_culture",
+      "original_value": 54.0,
+      "cloze_consensus": 54.0,
+      "consensus_raw": {
+        "clean_t0": 54.0,
+        "helpful_t03": 54.0,
+        "safety_t07": 54.0
+      },
+      "contrast_value": 16.0
+    },
+    {
+      "name": "total episode count of the cable drama halt and catch fire",
+      "domain": "pop_culture",
+      "original_value": 40.0,
+      "cloze_consensus": 40.0,
+      "consensus_raw": {
+        "clean_t0": 40.0,
+        "helpful_t03": 40.0,
+        "safety_t07": 40.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "total episode count of the british series sapphire & steel",
+      "domain": "pop_culture",
+      "original_value": 34.0,
+      "cloze_consensus": 34.0,
+      "consensus_raw": {
+        "clean_t0": 34.0,
+        "helpful_t03": 34.0,
+        "safety_t07": 34.0
+      },
+      "contrast_value": 13.0
+    },
+    {
+      "name": "total episode count of the cable drama the leftovers",
+      "domain": "pop_culture",
+      "original_value": 28.0,
+      "cloze_consensus": 28.0,
+      "consensus_raw": {
+        "clean_t0": 28.0,
+        "helpful_t03": 28.0,
+        "safety_t07": 28.0
+      },
+      "contrast_value": 18.0
+    },
+    {
+      "name": "total episode count of the anime series mushishi",
+      "domain": "pop_culture",
+      "original_value": 46.0,
+      "cloze_consensus": 46.0,
+      "consensus_raw": {
+        "clean_t0": 46.0,
+        "helpful_t03": 46.0,
+        "safety_t07": 46.0
+      },
+      "contrast_value": 26.0
+    },
+    {
+      "name": "total episode count of the british comedy series inside no. 9",
+      "domain": "pop_culture",
+      "original_value": 55.0,
+      "cloze_consensus": 55.0,
+      "consensus_raw": {
+        "clean_t0": 55.0,
+        "helpful_t03": 55.0,
+        "safety_t07": 55.0
+      },
+      "contrast_value": 18.0
+    },
+    {
+      "name": "total episode count of the cable drama treme",
+      "domain": "pop_culture",
+      "original_value": 36.0,
+      "cloze_consensus": 36.0,
+      "consensus_raw": {
+        "clean_t0": 36.0,
+        "helpful_t03": 36.0,
+        "safety_t07": 36.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "total number of issues in the original 1980s first comics run of grimjack",
+      "domain": "pop_culture",
+      "original_value": 81.0,
+      "cloze_consensus": 81.0,
+      "consensus_raw": {
+        "clean_t0": 81.0,
+        "helpful_t03": 81.0,
+        "safety_t07": 81.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of tankōbon volumes in the original manga series 7seeds by yumi tamura",
+      "domain": "pop_culture",
+      "original_value": 35.0,
+      "cloze_consensus": 35.0,
+      "consensus_raw": {
+        "clean_t0": 35.0,
+        "helpful_t03": 35.0,
+        "safety_t07": 35.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "total number of issues in the original comico series of mage: the hero discovered",
+      "domain": "pop_culture",
+      "original_value": 15.0,
+      "cloze_consensus": 15.0,
+      "consensus_raw": {
+        "clean_t0": 15.0,
+        "helpful_t03": 15.0,
+        "safety_t07": 15.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "total number of issues in the 1990s vertigo series the invisibles across all three volumes",
+      "domain": "pop_culture",
+      "original_value": 59.0,
+      "cloze_consensus": 59.0,
+      "consensus_raw": {
+        "clean_t0": 59.0,
+        "helpful_t03": 59.0,
+        "safety_t07": 59.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of tankōbon volumes in the manga series yokohama kaidashi kikō",
+      "domain": "pop_culture",
+      "original_value": 14.0,
+      "cloze_consensus": 14.0,
+      "consensus_raw": {
+        "clean_t0": 14.0,
+        "helpful_t03": 14.0,
+        "safety_t07": 14.0
+      },
+      "contrast_value": 16.0
+    },
+    {
+      "name": "total number of issues in the original kitchen sink press run of the crow",
+      "domain": "pop_culture",
+      "original_value": 4.0,
+      "cloze_consensus": 4.0,
+      "consensus_raw": {
+        "clean_t0": 4.0,
+        "helpful_t03": 4.0,
+        "safety_t07": 4.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of issues in the 1980s eclipse comics series zot!",
+      "domain": "pop_culture",
+      "original_value": 36.0,
+      "cloze_consensus": 36.0,
+      "consensus_raw": {
+        "clean_t0": 36.0,
+        "helpful_t03": 36.0,
+        "safety_t07": 36.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of tankōbon volumes in the manga series mushishi",
+      "domain": "pop_culture",
+      "original_value": 10.0,
+      "cloze_consensus": 10.0,
+      "consensus_raw": {
+        "clean_t0": 10.0,
+        "helpful_t03": 10.0,
+        "safety_t07": 10.0
+      },
+      "contrast_value": 20.0
+    },
+    {
+      "name": "total number of issues in the original pacific comics run of the rocketeer",
+      "domain": "pop_culture",
+      "original_value": 2.0,
+      "cloze_consensus": 2.0,
+      "consensus_raw": {
+        "clean_t0": 2.0,
+        "helpful_t03": 2.0,
+        "safety_t07": 2.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of tankōbon volumes in the manga series eden: it's an endless world!",
+      "domain": "pop_culture",
+      "original_value": 18.0,
+      "cloze_consensus": 18.0,
+      "consensus_raw": {
+        "clean_t0": 18.0,
+        "helpful_t03": 18.0,
+        "safety_t07": 18.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of issues in the original caliber press run of deadworld",
+      "domain": "pop_culture",
+      "original_value": 26.0,
+      "cloze_consensus": 9.0,
+      "consensus_raw": {
+        "clean_t0": 9.0,
+        "helpful_t03": 9.0,
+        "safety_t07": 9.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "total number of tankōbon volumes in the manga series flowers of evil (aku no hana)",
+      "domain": "pop_culture",
+      "original_value": 11.0,
+      "cloze_consensus": 11.0,
+      "consensus_raw": {
+        "clean_t0": 11.0,
+        "helpful_t03": 11.0,
+        "safety_t07": 11.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "peak billboard hot 100 position of \"the safety dance\" by men without hats",
+      "domain": "pop_culture",
+      "original_value": 3.0,
+      "cloze_consensus": 3.0,
+      "consensus_raw": {
+        "clean_t0": 3.0,
+        "helpful_t03": 3.0,
+        "safety_t07": 3.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "year the something awful forums officially launched",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2004.0
+    },
+    {
+      "name": "year the first post was made on metafilter",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "year the first version of the scp foundation wiki was hosted on editthis",
+      "domain": "internet_culture",
+      "original_value": 2008.0,
+      "cloze_consensus": 2008.0,
+      "consensus_raw": {
+        "clean_t0": 2008.0,
+        "helpful_t03": 2008.0,
+        "safety_t07": 2008.0
+      },
+      "contrast_value": 2007.0
+    },
+    {
+      "name": "year the first \"ytmnd\" (you're the man now, dog) site was created",
+      "domain": "internet_culture",
+      "original_value": 2001.0,
+      "cloze_consensus": 2001.0,
+      "consensus_raw": {
+        "clean_t0": 2001.0,
+        "helpful_t03": 2001.0,
+        "safety_t07": 2001.0
+      },
+      "contrast_value": 2009.0
+    },
+    {
+      "name": "year the neopets website officially launched to the public",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2003.0
+    },
+    {
+      "name": "year the \"homestar runner\" website was launched",
+      "domain": "internet_culture",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 2006.0
+    },
+    {
+      "name": "year the \"all your base are belong to us\" flash animation was posted to newgrounds",
+      "domain": "internet_culture",
+      "original_value": 2001.0,
+      "cloze_consensus": 2001.0,
+      "consensus_raw": {
+        "clean_t0": 2001.0,
+        "helpful_t03": 2001.0,
+        "safety_t07": 2001.0
+      },
+      "contrast_value": 2005.0
+    },
+    {
+      "name": "year the \"navy seals\" copypasta first appeared on the otaku culture board",
+      "domain": "internet_culture",
+      "original_value": 2010.0,
+      "cloze_consensus": 2010.0,
+      "consensus_raw": {
+        "clean_t0": 2010.0,
+        "helpful_t03": 2010.0,
+        "safety_t07": 2010.0
+      },
+      "contrast_value": 2008.0
+    },
+    {
+      "name": "year the \"time cube\" website was first launched by gene ray",
+      "domain": "internet_culture",
+      "original_value": 1997.0,
+      "cloze_consensus": 1997.0,
+      "consensus_raw": {
+        "clean_t0": 1997.0,
+        "helpful_t03": 1997.0,
+        "safety_t07": 1997.0
+      },
+      "contrast_value": 1998.0
+    },
+    {
+      "name": "year the \"i can has cheezburger?\" blog was founded",
+      "domain": "internet_culture",
+      "original_value": 2007.0,
+      "cloze_consensus": 2007.0,
+      "consensus_raw": {
+        "clean_t0": 2007.0,
+        "helpful_t03": 2007.0,
+        "safety_t07": 2007.0
+      },
+      "contrast_value": 2005.0
+    },
+    {
+      "name": "year the \"hamster dance\" (hampton the hampster) website was created",
+      "domain": "internet_culture",
+      "original_value": 1998.0,
+      "cloze_consensus": 1998.0,
+      "consensus_raw": {
+        "clean_t0": 1998.0,
+        "helpful_t03": 1998.0,
+        "safety_t07": 1998.0
+      },
+      "contrast_value": 2005.0
+    },
+    {
+      "name": "year the \"badger badger badger\" flash animation was released",
+      "domain": "internet_culture",
+      "original_value": 2003.0,
+      "cloze_consensus": 2003.0,
+      "consensus_raw": {
+        "clean_t0": 2003.0,
+        "helpful_t03": 2003.0,
+        "safety_t07": 2003.0
+      },
+      "contrast_value": 2005.0
+    },
+    {
+      "name": "year the \"doggolingo\" precursor \"dogespeak\" originated on tumblr",
+      "domain": "internet_culture",
+      "original_value": 2010.0,
+      "cloze_consensus": 2010.0,
+      "consensus_raw": {
+        "clean_t0": 2010.0,
+        "helpful_t03": 2010.0,
+        "safety_t07": 2010.0
+      },
+      "contrast_value": 2007.0
+    },
+    {
+      "name": "year the first webcam (trojan room coffee pot) went online",
+      "domain": "internet_culture",
+      "original_value": 1991.0,
+      "cloze_consensus": 1991.0,
+      "consensus_raw": {
+        "clean_t0": 1991.0,
+        "helpful_t03": 1991.0,
+        "safety_t07": 1991.0
+      },
+      "contrast_value": 1993.0
+    },
+    {
+      "name": "year the fidonet protocol was first implemented by tom jennings",
+      "domain": "internet_culture",
+      "original_value": 1984.0,
+      "cloze_consensus": 1984.0,
+      "consensus_raw": {
+        "clean_t0": 1984.0,
+        "helpful_t03": 1984.0,
+        "safety_t07": 1984.0
+      },
+      "contrast_value": 1989.0
+    },
+    {
+      "name": "year the first banner-style \"webring\" was founded by sage weil",
+      "domain": "internet_culture",
+      "original_value": 1994.0,
+      "cloze_consensus": 1994.0,
+      "consensus_raw": {
+        "clean_t0": 1994.0,
+        "helpful_t03": 1994.0,
+        "safety_t07": 1994.0
+      },
+      "contrast_value": 1998.0
+    },
+    {
+      "name": "year the first \"camgirl\" site (jennicam) was launched",
+      "domain": "internet_culture",
+      "original_value": 1996.0,
+      "cloze_consensus": 1996.0,
+      "consensus_raw": {
+        "clean_t0": 1996.0,
+        "helpful_t03": 1996.0,
+        "safety_t07": 1996.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "year the first \"kuro5hin\" (k5) article was posted",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "year the first version of the arena browser (0.01) was released",
+      "domain": "internet_culture",
+      "original_value": 1993.0,
+      "cloze_consensus": 1993.0,
+      "consensus_raw": {
+        "clean_t0": 1993.0,
+        "helpful_t03": 1993.0,
+        "safety_t07": 1993.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "year the first public beta of the opera browser (multitorg opera 2.0) was released",
+      "domain": "internet_culture",
+      "original_value": 1996.0,
+      "cloze_consensus": 1996.0,
+      "consensus_raw": {
+        "clean_t0": 1996.0,
+        "helpful_t03": 1996.0,
+        "safety_t07": 1996.0
+      },
+      "contrast_value": 2003.0
+    },
+    {
+      "name": "year the first version of the rss standard (rdf site summary 0.9) was released by netscape",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2003.0
+    },
+    {
+      "name": "year the first version of the jabber (xmpp) protocol (0.7) was released",
+      "domain": "internet_culture",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "year the first version of the web hypertext application technology working group (whatwg) was formed",
+      "domain": "internet_culture",
+      "original_value": 2004.0,
+      "cloze_consensus": 2004.0,
+      "consensus_raw": {
+        "clean_t0": 2004.0,
+        "helpful_t03": 2004.0,
+        "safety_t07": 2004.0
+      },
+      "contrast_value": 1994.0
+    },
+    {
+      "name": "year the first version of the openid protocol (1.0) was released",
+      "domain": "internet_culture",
+      "original_value": 2005.0,
+      "cloze_consensus": 2005.0,
+      "consensus_raw": {
+        "clean_t0": 2005.0,
+        "helpful_t03": 2005.0,
+        "safety_t07": 2005.0
+      },
+      "contrast_value": 2006.0
+    },
+    {
+      "name": "year the first version of the blueprint css framework (0.1) was released",
+      "domain": "internet_culture",
+      "original_value": 2007.0,
+      "cloze_consensus": 2007.0,
+      "consensus_raw": {
+        "clean_t0": 2007.0,
+        "helpful_t03": 2007.0,
+        "safety_t07": 2007.0
+      },
+      "contrast_value": 2011.0
+    },
+    {
+      "name": "隋朝大业三年始设进士科以试策取士",
+      "domain": "chinese_history",
+      "original_value": 607.0,
+      "cloze_consensus": 607.0,
+      "consensus_raw": {
+        "clean_t0": 607.0,
+        "helpful_t03": 607.0,
+        "safety_t07": 607.0
+      },
+      "contrast_value": 618.0
+    },
+    {
+      "name": "宋真宗景德元年辽宋签订澶渊之盟",
+      "domain": "chinese_history",
+      "original_value": 1004.0,
+      "cloze_consensus": 1004.0,
+      "consensus_raw": {
+        "clean_t0": 1004.0,
+        "helpful_t03": 1004.0,
+        "safety_t07": 1004.0
+      },
+      "contrast_value": 1005.0
+    },
+    {
+      "name": "清朝《四库全书》第一部文渊阁本缮写完成",
+      "domain": "chinese_history",
+      "original_value": 1782.0,
+      "cloze_consensus": 1782.0,
+      "consensus_raw": {
+        "clean_t0": 1782.0,
+        "helpful_t03": 1782.0,
+        "safety_t07": 1782.0
+      },
+      "contrast_value": 1781.0
+    },
+    {
+      "name": "北宋《册府元龟》编纂完成",
+      "domain": "chinese_history",
+      "original_value": 1013.0,
+      "cloze_consensus": 1013.0,
+      "consensus_raw": {
+        "clean_t0": 1013.0,
+        "helpful_t03": 1013.0,
+        "safety_t07": 1013.0
+      },
+      "contrast_value": 1044.0
+    },
+    {
+      "name": "北宋《文苑英华》编纂完成",
+      "domain": "chinese_history",
+      "original_value": 986.0,
+      "cloze_consensus": 986.0,
+      "consensus_raw": {
+        "clean_t0": 986.0,
+        "helpful_t03": 986.0,
+        "safety_t07": 986.0
+      },
+      "contrast_value": 985.0
+    },
+    {
+      "name": "北宋《太平广记》奉旨编成",
+      "domain": "chinese_history",
+      "original_value": 978.0,
+      "cloze_consensus": 978.0,
+      "consensus_raw": {
+        "clean_t0": 978.0,
+        "helpful_t03": 978.0,
+        "safety_t07": 978.0
+      },
+      "contrast_value": 983.0
+    },
+    {
+      "name": "清朝《全唐诗》由扬州诗局刊刻完成",
+      "domain": "chinese_history",
+      "original_value": 1706.0,
+      "cloze_consensus": 1706.0,
+      "consensus_raw": {
+        "clean_t0": 1706.0,
+        "helpful_t03": 1706.0,
+        "safety_t07": 1706.0
+      },
+      "contrast_value": 1795.0
+    },
+    {
+      "name": "清朝《大清一统志》乾隆重修本定稿",
+      "domain": "chinese_history",
+      "original_value": 1784.0,
+      "cloze_consensus": 1784.0,
+      "consensus_raw": {
+        "clean_t0": 1784.0,
+        "helpful_t03": 1784.0,
+        "safety_t07": 1784.0
+      },
+      "contrast_value": 1794.0
+    },
+    {
+      "name": "清朝《大清会典》康熙朝首部编成",
+      "domain": "chinese_history",
+      "original_value": 1690.0,
+      "cloze_consensus": 1690.0,
+      "consensus_raw": {
+        "clean_t0": 1690.0,
+        "helpful_t03": 1690.0,
+        "safety_t07": 1690.0
+      },
+      "contrast_value": 1685.0
+    },
+    {
+      "name": "中俄《布连斯奇条约》签订",
+      "domain": "chinese_history",
+      "original_value": 1727.0,
+      "cloze_consensus": 1727.0,
+      "consensus_raw": {
+        "clean_t0": 1727.0,
+        "helpful_t03": 1727.0,
+        "safety_t07": 1727.0
+      },
+      "contrast_value": 1864.0
+    },
+    {
+      "name": "中日《北京专条》签订确认琉球难民补偿",
+      "domain": "chinese_history",
+      "original_value": 1874.0,
+      "cloze_consensus": 1874.0,
+      "consensus_raw": {
+        "clean_t0": 1874.0,
+        "helpful_t03": 1874.0,
+        "safety_t07": 1874.0
+      },
+      "contrast_value": 1880.0
+    },
+    {
+      "name": "中英《续议通商行船条约》（马凯条约）签订",
+      "domain": "chinese_history",
+      "original_value": 1902.0,
+      "cloze_consensus": 1902.0,
+      "consensus_raw": {
+        "clean_t0": 1902.0,
+        "helpful_t03": 1902.0,
+        "safety_t07": 1902.0
+      },
+      "contrast_value": 1903.0
+    },
+    {
+      "name": "中俄《满洲里界约》签订",
+      "domain": "chinese_history",
+      "original_value": 1911.0,
+      "cloze_consensus": 1911.0,
+      "consensus_raw": {
+        "clean_t0": 1911.0,
+        "helpful_t03": 1911.0,
+        "safety_t07": 1911.0
+      },
+      "contrast_value": 1886.0
+    },
+    {
+      "name": "重庆市渝中区平均海拔（米）",
+      "domain": "chinese_geography",
+      "original_value": 259.0,
+      "cloze_consensus": 259.0,
+      "consensus_raw": {
+        "clean_t0": 259.0,
+        "helpful_t03": 259.0,
+        "safety_t07": 259.0
+      },
+      "contrast_value": 532.0
+    },
+    {
+      "name": "沈阳市中心平均海拔（米）",
+      "domain": "chinese_geography",
+      "original_value": 45.0,
+      "cloze_consensus": 45.0,
+      "consensus_raw": {
+        "clean_t0": 45.0,
+        "helpful_t03": 45.0,
+        "safety_t07": 45.0
+      },
+      "contrast_value": 41.0
+    },
+    {
+      "name": "赣江全长（千米）",
+      "domain": "chinese_geography",
+      "original_value": 823.0,
+      "cloze_consensus": 823.0,
+      "consensus_raw": {
+        "clean_t0": 823.0,
+        "helpful_t03": 823.0,
+        "safety_t07": 823.0
+      },
+      "contrast_value": 443.0
+    },
+    {
+      "name": "怒江中国境内长度（千米）",
+      "domain": "chinese_geography",
+      "original_value": 2013.0,
+      "cloze_consensus": 2013.0,
+      "consensus_raw": {
+        "clean_t0": 2013.0,
+        "helpful_t03": 2013.0,
+        "safety_t07": 2013.0
+      },
+      "contrast_value": 1300.0
+    },
+    {
+      "name": "额尔齐斯河中国境内长度（千米）",
+      "domain": "chinese_geography",
+      "original_value": 546.0,
+      "cloze_consensus": 546.0,
+      "consensus_raw": {
+        "clean_t0": 546.0,
+        "helpful_t03": 546.0,
+        "safety_t07": 546.0
+      },
+      "contrast_value": 1000.0
+    },
+    {
+      "name": "太湖平均水深（米）",
+      "domain": "chinese_geography",
+      "original_value": 1.8933,
+      "cloze_consensus": 1.9,
+      "consensus_raw": {
+        "clean_t0": 1.9,
+        "helpful_t03": 1.9,
+        "safety_t07": 1.9
+      },
+      "contrast_value": null
+    },
+    {
+      "name": "洪泽湖正常蓄水位12.5米时水面面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 1587.9667,
+      "cloze_consensus": 1597.0,
+      "consensus_raw": {
+        "clean_t0": 1597.0,
+        "helpful_t03": 1597.0,
+        "safety_t07": 1597.0
+      },
+      "contrast_value": 1969.0
+    },
+    {
+      "name": "青海湖2020年实测最大深度（米）",
+      "domain": "chinese_geography",
+      "original_value": 32.8,
+      "cloze_consensus": 32.8,
+      "consensus_raw": {
+        "clean_t0": 32.8,
+        "helpful_t03": 32.8,
+        "safety_t07": 32.8
+      },
+      "contrast_value": 21.0
+    },
+    {
+      "name": "呼伦湖多年平均水深（米）",
+      "domain": "chinese_geography",
+      "original_value": 5.7,
+      "cloze_consensus": 5.7,
+      "consensus_raw": {
+        "clean_t0": 5.7,
+        "helpful_t03": 5.7,
+        "safety_t07": 5.7
+      },
+      "contrast_value": 8.5
+    },
+    {
+      "name": "扎日南木错水面面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 1022.6667,
+      "cloze_consensus": 1022.0,
+      "consensus_raw": {
+        "clean_t0": 1022.0,
+        "helpful_t03": 1022.0,
+        "safety_t07": 1022.0
+      },
+      "contrast_value": 2370.0
+    },
+    {
+      "name": "当惹雍错最大深度（米）",
+      "domain": "chinese_geography",
+      "original_value": 230.0,
+      "cloze_consensus": 230.0,
+      "consensus_raw": {
+        "clean_t0": 230.0,
+        "helpful_t03": 230.0,
+        "safety_t07": 230.0
+      },
+      "contrast_value": 105.0
+    },
+    {
+      "name": "艾比湖20世纪50年代初期水面面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 1200.0,
+      "cloze_consensus": 1200.0,
+      "consensus_raw": {
+        "clean_t0": 1200.0,
+        "helpful_t03": 1200.0,
+        "safety_t07": 1200.0
+      },
+      "contrast_value": 1301.0
+    },
+    {
+      "name": "酒泉市行政区域面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 192000.0,
+      "cloze_consensus": 192000.0,
+      "consensus_raw": {
+        "clean_t0": 192000.0,
+        "helpful_t03": 192000.0,
+        "safety_t07": 192000.0
+      },
+      "contrast_value": 128000.0
+    },
+    {
+      "name": "昌都市行政区域面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 109479.3333,
+      "cloze_consensus": 110000.0,
+      "consensus_raw": {
+        "clean_t0": 110000.0,
+        "helpful_t03": 110000.0,
+        "safety_t07": 110000.0
+      },
+      "contrast_value": 84900.0
+    },
+    {
+      "name": "玉树藏族自治州行政区域面积（平方千米）",
+      "domain": "chinese_geography",
+      "original_value": 267000.0,
+      "cloze_consensus": 267000.0,
+      "consensus_raw": {
+        "clean_t0": 267000.0,
+        "helpful_t03": 267000.0,
+        "safety_t07": 267000.0
+      },
+      "contrast_value": 227000.0
+    },
+    {
+      "name": "水木清华bbs正式开站年份",
+      "domain": "chinese_internet",
+      "original_value": 1995.0,
+      "cloze_consensus": 1995.0,
+      "consensus_raw": {
+        "clean_t0": 1995.0,
+        "helpful_t03": 1995.0,
+        "safety_t07": 1995.0
+      },
+      "contrast_value": 1996.0
+    },
+    {
+      "name": "猫扑（mop）创办年份",
+      "domain": "chinese_internet",
+      "original_value": 1997.0,
+      "cloze_consensus": 1997.0,
+      "consensus_raw": {
+        "clean_t0": 1997.0,
+        "helpful_t03": 1997.0,
+        "safety_t07": 1997.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "西祠胡同上线年份",
+      "domain": "chinese_internet",
+      "original_value": 1998.0,
+      "cloze_consensus": 1998.0,
+      "consensus_raw": {
+        "clean_t0": 1998.0,
+        "helpful_t03": 1998.0,
+        "safety_t07": 1998.0
+      },
+      "contrast_value": 1999.0
+    },
+    {
+      "name": "红袖添香文学网创办年份",
+      "domain": "chinese_internet",
+      "original_value": 1999.0,
+      "cloze_consensus": 1999.0,
+      "consensus_raw": {
+        "clean_t0": 1999.0,
+        "helpful_t03": 1999.0,
+        "safety_t07": 1999.0
+      },
+      "contrast_value": 1997.0
+    },
+    {
+      "name": "来往（laiwang）正式发布年份",
+      "domain": "chinese_internet",
+      "original_value": 2013.0,
+      "cloze_consensus": 2013.0,
+      "consensus_raw": {
+        "clean_t0": 2013.0,
+        "helpful_t03": 2013.0,
+        "safety_t07": 2013.0
+      },
+      "contrast_value": 2014.0
+    },
+    {
+      "name": "企业微信（wecom）正式发布年份",
+      "domain": "chinese_internet",
+      "original_value": 2016.0,
+      "cloze_consensus": 2016.0,
+      "consensus_raw": {
+        "clean_t0": 2016.0,
+        "helpful_t03": 2016.0,
+        "safety_t07": 2016.0
+      },
+      "contrast_value": 2017.0
+    },
+    {
+      "name": "闲鱼（前身“淘宝二手”）移动客户端上线年份",
+      "domain": "chinese_internet",
+      "original_value": 2014.0,
+      "cloze_consensus": 2014.0,
+      "consensus_raw": {
+        "clean_t0": 2014.0,
+        "helpful_t03": 2014.0,
+        "safety_t07": 2014.0
+      },
+      "contrast_value": 2016.0
+    },
+    {
+      "name": "点点网（轻博客）上线年份",
+      "domain": "chinese_internet",
+      "original_value": 2011.0,
+      "cloze_consensus": 2011.0,
+      "consensus_raw": {
+        "clean_t0": 2011.0,
+        "helpful_t03": 2011.0,
+        "safety_t07": 2011.0
+      },
+      "contrast_value": 2010.0
+    },
+    {
+      "name": "字节跳动首款产品“内涵段子”上线年份",
+      "domain": "chinese_internet",
+      "original_value": 2012.0,
+      "cloze_consensus": 2012.0,
+      "consensus_raw": {
+        "clean_t0": 2012.0,
+        "helpful_t03": 2012.0,
+        "safety_t07": 2012.0
+      },
+      "contrast_value": 2013.0
+    },
+    {
+      "name": "瀛海威“织网计划”启动年份",
+      "domain": "chinese_internet",
+      "original_value": 1996.0,
+      "cloze_consensus": 1996.0,
+      "consensus_raw": {
+        "clean_t0": 1996.0,
+        "helpful_t03": 1996.0,
+        "safety_t07": 1996.0
+      },
+      "contrast_value": 1999.0
+    },
+    {
+      "name": "碧海银沙“灵通人士”聊天室上线年份",
+      "domain": "chinese_internet",
+      "original_value": 1998.0,
+      "cloze_consensus": 1998.0,
+      "consensus_raw": {
+        "clean_t0": 1998.0,
+        "helpful_t03": 1998.0,
+        "safety_t07": 1998.0
+      },
+      "contrast_value": 2000.0
+    },
+    {
+      "name": "微信“摇一摇”功能正式上线年份",
+      "domain": "chinese_internet",
+      "original_value": 2011.0,
+      "cloze_consensus": 2011.0,
+      "consensus_raw": {
+        "clean_t0": 2011.0,
+        "helpful_t03": 2011.0,
+        "safety_t07": 2011.0
+      },
+      "contrast_value": 2013.0
+    },
+    {
+      "name": "社区团购“老三样”（兴盛优选、十荟团、芙蓉兴盛）混战年份",
+      "domain": "chinese_internet",
+      "original_value": 2018.0,
+      "cloze_consensus": 2018.0,
+      "consensus_raw": {
+        "clean_t0": 2018.0,
+        "helpful_t03": 2018.0,
+        "safety_t07": 2018.0
+      },
+      "contrast_value": 2019.0
+    },
+    {
+      "name": "快手“k3战役”发起年份",
+      "domain": "chinese_internet",
+      "original_value": 2019.0,
+      "cloze_consensus": 2019.0,
+      "consensus_raw": {
+        "clean_t0": 2019.0,
+        "helpful_t03": 2019.0,
+        "safety_t07": 2019.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "字节跳动“大力教育”品牌正式发布年份",
+      "domain": "chinese_internet",
+      "original_value": 2020.0,
+      "cloze_consensus": 2020.0,
+      "consensus_raw": {
+        "clean_t0": 2020.0,
+        "helpful_t03": 2020.0,
+        "safety_t07": 2020.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "《万王之王》中国首款图形化网游上线年份",
+      "domain": "chinese_internet",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "巨人网络（原征途网络）成立年份",
+      "domain": "chinese_internet",
+      "original_value": 2004.0,
+      "cloze_consensus": 2004.0,
+      "consensus_raw": {
+        "clean_t0": 2004.0,
+        "helpful_t03": 2004.0,
+        "safety_t07": 2004.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "张爱玲成名作短篇小说集《传奇》由杂志社自行出版的年份",
+      "domain": "chinese_literature",
+      "original_value": 1944.0,
+      "cloze_consensus": 1944.0,
+      "consensus_raw": {
+        "clean_t0": 1944.0,
+        "helpful_t03": 1944.0,
+        "safety_t07": 1944.0
+      },
+      "contrast_value": 1946.0
+    },
+    {
+      "name": "戴望舒成名诗作《雨巷》在《小说月报》发表的年份",
+      "domain": "chinese_literature",
+      "original_value": 1928.0,
+      "cloze_consensus": 1928.0,
+      "consensus_raw": {
+        "clean_t0": 1928.0,
+        "helpful_t03": 1928.0,
+        "safety_t07": 1928.0
+      },
+      "contrast_value": 1927.0
+    },
+    {
+      "name": "路遥《平凡的世界》第三部完稿并由中国文联出版公司出版的年份",
+      "domain": "chinese_literature",
+      "original_value": 1989.0,
+      "cloze_consensus": 1989.0,
+      "consensus_raw": {
+        "clean_t0": 1989.0,
+        "helpful_t03": 1989.0,
+        "safety_t07": 1989.0
+      },
+      "contrast_value": 1991.0
+    },
+    {
+      "name": "王小波“时代三部曲”之《黄金时代》由华岳文艺出版社出版的年份",
+      "domain": "chinese_literature",
+      "original_value": 1992.0,
+      "cloze_consensus": 1992.0,
+      "consensus_raw": {
+        "clean_t0": 1992.0,
+        "helpful_t03": 1992.0,
+        "safety_t07": 1992.0
+      },
+      "contrast_value": 1998.0
+    },
+    {
+      "name": "格非“江南三部曲”的第一部《人面桃花》出版年份",
+      "domain": "chinese_literature",
+      "original_value": 2004.0,
+      "cloze_consensus": 2004.0,
+      "consensus_raw": {
+        "clean_t0": 2004.0,
+        "helpful_t03": 2004.0,
+        "safety_t07": 2004.0
+      },
+      "contrast_value": 2003.0
+    },
+    {
+      "name": "史铁生哲思散文《我与地坛》在《上海文学》发表的年份",
+      "domain": "chinese_literature",
+      "original_value": 1991.0,
+      "cloze_consensus": 1991.0,
+      "consensus_raw": {
+        "clean_t0": 1991.0,
+        "helpful_t03": 1991.0,
+        "safety_t07": 1991.0
+      },
+      "contrast_value": 1979.0
+    },
+    {
+      "name": "张洁凭借《沉重的翅膀》获得第二届茅盾文学奖的年份",
+      "domain": "chinese_literature",
+      "original_value": 1985.0,
+      "cloze_consensus": 1985.0,
+      "consensus_raw": {
+        "clean_t0": 1985.0,
+        "helpful_t03": 1985.0,
+        "safety_t07": 1985.0
+      },
+      "contrast_value": 1988.0
+    },
+    {
+      "name": "温庭筠卒年（据傅璇琮《唐才子传校笺》考证）",
+      "domain": "chinese_literature",
+      "original_value": 866.0,
+      "cloze_consensus": 866.0,
+      "consensus_raw": {
+        "clean_t0": 866.0,
+        "helpful_t03": 866.0,
+        "safety_t07": 866.0
+      },
+      "contrast_value": 885.0
+    },
+    {
+      "name": "纳兰性德《通志堂集》由顾贞观编纂成书的年份",
+      "domain": "chinese_literature",
+      "original_value": 1691.0,
+      "cloze_consensus": 1691.0,
+      "consensus_raw": {
+        "clean_t0": 1691.0,
+        "helpful_t03": 1691.0,
+        "safety_t07": 1691.0
+      },
+      "contrast_value": 1684.0
+    },
+    {
+      "name": "姜夔《扬州慢》词序所载之淳熙丙申年",
+      "domain": "chinese_literature",
+      "original_value": 1176.0,
+      "cloze_consensus": 1176.0,
+      "consensus_raw": {
+        "clean_t0": 1176.0,
+        "helpful_t03": 1176.0,
+        "safety_t07": 1176.0
+      },
+      "contrast_value": 1178.0
+    },
+    {
+      "name": "王沂孙《花犯·苔梅》等咏物词集结之《花外集》成书年份",
+      "domain": "chinese_literature",
+      "original_value": 1291.0,
+      "cloze_consensus": 1291.0,
+      "consensus_raw": {
+        "clean_t0": 1291.0,
+        "helpful_t03": 1291.0,
+        "safety_t07": 1291.0
+      },
+      "contrast_value": 1921.0
+    },
+    {
+      "name": "朱彝尊《曝书亭集》中《鸳鸯湖棹歌》百首创作年份",
+      "domain": "chinese_literature",
+      "original_value": 1674.0,
+      "cloze_consensus": 1674.0,
+      "consensus_raw": {
+        "clean_t0": 1674.0,
+        "helpful_t03": 1674.0,
+        "safety_t07": 1674.0
+      },
+      "contrast_value": 1695.0
+    },
+    {
+      "name": "《儒林外史》现存最早的刻本“卧闲草堂本”刊刻年份",
+      "domain": "chinese_literature",
+      "original_value": 1803.0,
+      "cloze_consensus": 1803.0,
+      "consensus_raw": {
+        "clean_t0": 1803.0,
+        "helpful_t03": 1803.0,
+        "safety_t07": 1803.0
+      },
+      "contrast_value": 1757.0
+    },
+    {
+      "name": "《隋唐演义》作者褚人获自序所署之康熙乙亥年",
+      "domain": "chinese_literature",
+      "original_value": 1695.0,
+      "cloze_consensus": 1695.0,
+      "consensus_raw": {
+        "clean_t0": 1695.0,
+        "helpful_t03": 1695.0,
+        "safety_t07": 1695.0
+      },
+      "contrast_value": 1715.0
+    },
+    {
+      "name": "《桃花扇》稿本最终完稿并由孔尚任定稿的康熙三十八年",
+      "domain": "chinese_literature",
+      "original_value": 1699.0,
+      "cloze_consensus": 1699.0,
+      "consensus_raw": {
+        "clean_t0": 1699.0,
+        "helpful_t03": 1699.0,
+        "safety_t07": 1699.0
+      },
+      "contrast_value": 1700.0
+    },
+    {
+      "name": "number of rounds in the cs-cipher",
+      "domain": "crypto_params",
+      "original_value": 8.0,
+      "cloze_consensus": 8.0,
+      "consensus_raw": {
+        "clean_t0": 8.0,
+        "helpful_t03": 8.0,
+        "safety_t07": 8.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "number of rounds in the loki91 block cipher",
+      "domain": "crypto_params",
+      "original_value": 16.0,
+      "cloze_consensus": 16.0,
+      "consensus_raw": {
+        "clean_t0": 16.0,
+        "helpful_t03": 16.0,
+        "safety_t07": 16.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "block size of the anubis cipher in bits",
+      "domain": "crypto_params",
+      "original_value": 128.0,
+      "cloze_consensus": 128.0,
+      "consensus_raw": {
+        "clean_t0": 128.0,
+        "helpful_t03": 128.0,
+        "safety_t07": 128.0
+      },
+      "contrast_value": 64.0
+    },
+    {
+      "name": "number of rounds in the khazad block cipher",
+      "domain": "crypto_params",
+      "original_value": 8.0,
+      "cloze_consensus": 8.0,
+      "consensus_raw": {
+        "clean_t0": 8.0,
+        "helpful_t03": 8.0,
+        "safety_t07": 8.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "block size of the noekeon cipher in bits",
+      "domain": "crypto_params",
+      "original_value": 128.0,
+      "cloze_consensus": 128.0,
+      "consensus_raw": {
+        "clean_t0": 128.0,
+        "helpful_t03": 128.0,
+        "safety_t07": 128.0
+      },
+      "contrast_value": 64.0
+    },
+    {
+      "name": "number of rounds in the macguffin block cipher",
+      "domain": "crypto_params",
+      "original_value": 32.0,
+      "cloze_consensus": 32.0,
+      "consensus_raw": {
+        "clean_t0": 32.0,
+        "helpful_t03": 32.0,
+        "safety_t07": 32.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "radiogatún 64-bit version belt length",
+      "domain": "crypto_params",
+      "original_value": 13.0,
+      "cloze_consensus": 13.0,
+      "consensus_raw": {
+        "clean_t0": 13.0,
+        "helpful_t03": 13.0,
+        "safety_t07": 13.0
+      },
+      "contrast_value": 12.0
+    },
+    {
+      "name": "publication year of the madryga block cipher",
+      "domain": "crypto_params",
+      "original_value": 1984.0,
+      "cloze_consensus": 1984.0,
+      "consensus_raw": {
+        "clean_t0": 1984.0,
+        "helpful_t03": 1984.0,
+        "safety_t07": 1984.0
+      },
+      "contrast_value": 2002.0
+    },
+    {
+      "name": "publication year of the feal-4 block cipher",
+      "domain": "crypto_params",
+      "original_value": 1987.0,
+      "cloze_consensus": 1987.0,
+      "consensus_raw": {
+        "clean_t0": 1987.0,
+        "helpful_t03": 1987.0,
+        "safety_t07": 1987.0
+      },
+      "contrast_value": 1991.0
+    },
+    {
+      "name": "publication year of the loki89 block cipher",
+      "domain": "crypto_params",
+      "original_value": 1990.0,
+      "cloze_consensus": 1990.0,
+      "consensus_raw": {
+        "clean_t0": 1990.0,
+        "helpful_t03": 1990.0,
+        "safety_t07": 1990.0
+      },
+      "contrast_value": 1989.0
+    },
+    {
+      "name": "publication year of the redoc ii block cipher",
+      "domain": "crypto_params",
+      "original_value": 1990.0,
+      "cloze_consensus": 1990.0,
+      "consensus_raw": {
+        "clean_t0": 1990.0,
+        "helpful_t03": 1990.0,
+        "safety_t07": 1990.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "publication year of the baseking block cipher",
+      "domain": "crypto_params",
+      "original_value": 1994.0,
+      "cloze_consensus": 1994.0,
+      "consensus_raw": {
+        "clean_t0": 1994.0,
+        "helpful_t03": 1994.0,
+        "safety_t07": 1994.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "publication year of the akelarre block cipher",
+      "domain": "crypto_params",
+      "original_value": 1996.0,
+      "cloze_consensus": 1996.0,
+      "consensus_raw": {
+        "clean_t0": 1996.0,
+        "helpful_t03": 1996.0,
+        "safety_t07": 1996.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "publication year of the cs-cipher",
+      "domain": "crypto_params",
+      "original_value": 1998.0,
+      "cloze_consensus": 1998.0,
+      "consensus_raw": {
+        "clean_t0": 1998.0,
+        "helpful_t03": 1998.0,
+        "safety_t07": 1998.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "publication year of the mercy block cipher",
+      "domain": "crypto_params",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "publication year of the noekeon block cipher",
+      "domain": "crypto_params",
+      "original_value": 2000.0,
+      "cloze_consensus": 2000.0,
+      "consensus_raw": {
+        "clean_t0": 2000.0,
+        "helpful_t03": 2000.0,
+        "safety_t07": 2000.0
+      },
+      "contrast_value": 2018.0
+    },
+    {
+      "name": "kyber-512 polynomial ring degree",
+      "domain": "crypto_params",
+      "original_value": 256.0,
+      "cloze_consensus": 256.0,
+      "consensus_raw": {
+        "clean_t0": 256.0,
+        "helpful_t03": 256.0,
+        "safety_t07": 256.0
+      },
+      "contrast_value": 1024.0
+    },
+    {
+      "name": "sphincs+ 128f hyper-tree height h",
+      "domain": "crypto_params",
+      "original_value": 60.0,
+      "cloze_consensus": 60.0,
+      "consensus_raw": {
+        "clean_t0": 60.0,
+        "helpful_t03": 60.0,
+        "safety_t07": 60.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "newhope-512-cpa-kem binomial distribution parameter k",
+      "domain": "crypto_params",
+      "original_value": 8.0,
+      "cloze_consensus": 8.0,
+      "consensus_raw": {
+        "clean_t0": 8.0,
+        "helpful_t03": 8.0,
+        "safety_t07": 8.0
+      },
+      "contrast_value": 10.0
+    },
+    {
+      "name": "picnic3-l1 number of mpc parties t",
+      "domain": "crypto_params",
+      "original_value": 16.0,
+      "cloze_consensus": 16.0,
+      "consensus_raw": {
+        "clean_t0": 16.0,
+        "helpful_t03": 16.0,
+        "safety_t07": 16.0
+      },
+      "contrast_value": 3.0
+    }
+  ],
+  "self_error": 0.0222,
+  "adaptive_p0": 0.0722,
+  "target_results": {
+    "gemini-3-flash-preview": {
+      "model": "google/gemini-3-flash-preview",
+      "is_self": true,
+      "values": [
+        125.0,
+        95.0,
+        243.0,
+        175.0,
+        80.0,
+        113.0,
+        134.0,
+        127.0,
+        292.0,
+        94.0,
+        155.0,
+        114.0,
+        110.0,
+        154.0,
+        142.0,
+        70.0,
+        79.0,
+        167.0,
+        256.0,
+        125.0,
+        177.0,
+        -19.1,
+        1760.0,
+        2490.0,
+        1555.0,
+        1870.0,
+        1201.0,
+        213.0,
+        156.0,
+        113.0,
+        190.0,
+        272.0,
+        160.0,
+        34.0,
+        293.0,
+        68.0,
+        270.0,
+        180.0,
+        267.0,
+        380.0,
+        220.0,
+        300.0,
+        300.0,
+        270.0,
+        205.0,
+        1510.0,
+        1770.0,
+        1550.0,
+        2130.0,
+        1380.0,
+        984.0,
+        3320.0,
+        2000.0,
+        1.133,
+        2.37,
+        3.49,
+        4.0,
+        1.5,
+        2.41,
+        2.39,
+        3850.0,
+        5290.0,
+        6900.0,
+        640.0,
+        2680.0,
+        1100.0,
+        1288.3,
+        1978.3,
+        677.4,
+        266.6,
+        2805.5,
+        3167.9,
+        9115.9,
+        749.2,
+        579.7,
+        0.923,
+        1000.0,
+        3580.0,
+        4300.0,
+        5850.0,
+        5600.0,
+        15.8,
+        13.9,
+        16.6,
+        17.1,
+        17.9,
+        18.4,
+        17.5,
+        17.5,
+        15600.0,
+        8900.0,
+        13300.0,
+        356000.0,
+        243000.0,
+        130000.0,
+        18800.0,
+        293500.0,
+        55000.0,
+        98000.0,
+        113000.0,
+        216.0,
+        144.0,
+        90.0,
+        110.0,
+        68.0,
+        164.0,
+        164.0,
+        116.0,
+        264.0,
+        44.0,
+        98.0,
+        98.0,
+        98.0,
+        54.0,
+        98.0,
+        58.0,
+        86.0,
+        48.0,
+        2.0,
+        28.0,
+        10.0,
+        18.0,
+        12.0,
+        24.0,
+        30.0,
+        80.0,
+        8.0,
+        24.0,
+        4.0,
+        7581.0,
+        127.0,
+        1915.0,
+        34560.0,
+        1044.0,
+        6728.0,
+        175560.0,
+        118124.0,
+        2188.0,
+        58786.0,
+        64.0,
+        1957.0,
+        1964.0,
+        1967.0,
+        1967.0,
+        1970.0,
+        1975.0,
+        1979.0,
+        1983.0,
+        1987.0,
+        1972.0,
+        2003.0,
+        2000.0,
+        2005.0,
+        2013.0,
+        2012.0,
+        2013.0,
+        1966.0,
+        1966.0,
+        1964.0,
+        1966.0,
+        1961.0,
+        1967.0,
+        1969.0,
+        1982.0,
+        1987.0,
+        1996.0,
+        2009.0,
+        2005.0,
+        1983.0,
+        1983.0,
+        15.0,
+        7.0,
+        7.0,
+        8.0,
+        6.0,
+        20.0,
+        7.0,
+        48.0,
+        6.0,
+        192.0,
+        12.0,
+        336.0,
+        336.0,
+        102.0,
+        528.0,
+        168.0,
+        110.0,
+        52.0,
+        30.0,
+        70.0,
+        54.0,
+        40.0,
+        34.0,
+        28.0,
+        46.0,
+        55.0,
+        36.0,
+        81.0,
+        35.0,
+        15.0,
+        59.0,
+        14.0,
+        4.0,
+        36.0,
+        10.0,
+        2.0,
+        18.0,
+        9.0,
+        11.0,
+        3.0,
+        1999.0,
+        1999.0,
+        2008.0,
+        2001.0,
+        1999.0,
+        2000.0,
+        2001.0,
+        2010.0,
+        1997.0,
+        2007.0,
+        1998.0,
+        2003.0,
+        2010.0,
+        1991.0,
+        1984.0,
+        1994.0,
+        1996.0,
+        1999.0,
+        1993.0,
+        1996.0,
+        1999.0,
+        1999.0,
+        2004.0,
+        2005.0,
+        2007.0,
+        607.0,
+        1004.0,
+        1782.0,
+        1013.0,
+        986.0,
+        978.0,
+        1706.0,
+        1784.0,
+        1690.0,
+        1727.0,
+        1874.0,
+        1902.0,
+        1911.0,
+        259.0,
+        45.0,
+        823.0,
+        2013.0,
+        546.0,
+        1.9,
+        1597.0,
+        32.8,
+        5.7,
+        1022.0,
+        230.0,
+        1200.0,
+        192000.0,
+        110000.0,
+        267000.0,
+        1995.0,
+        1997.0,
+        1998.0,
+        1999.0,
+        2013.0,
+        2016.0,
+        2014.0,
+        2011.0,
+        2012.0,
+        1996.0,
+        1998.0,
+        2011.0,
+        2018.0,
+        2019.0,
+        2020.0,
+        2000.0,
+        2004.0,
+        1944.0,
+        1928.0,
+        1988.0,
+        1992.0,
+        2004.0,
+        1991.0,
+        1985.0,
+        866.0,
+        1691.0,
+        1176.0,
+        1291.0,
+        1674.0,
+        1803.0,
+        1695.0,
+        1699.0,
+        8.0,
+        16.0,
+        128.0,
+        8.0,
+        128.0,
+        32.0,
+        13.0,
+        1984.0,
+        1987.0,
+        1990.0,
+        1990.0,
+        1994.0,
+        1996.0,
+        1998.0,
+        2000.0,
+        2000.0,
+        256.0,
+        60.0,
+        8.0,
+        16.0
+      ],
+      "match_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "correct": 308,
+      "total": 315,
+      "hamming": 7,
+      "error_rate": 0.0222,
+      "p_value": 1.0,
+      "significant": false,
+      "domain_breakdown": {
+        "chemistry_bp": {
+          "correct": 22,
+          "wrong": 0,
+          "total": 22
+        },
+        "chemistry_mp": {
+          "correct": 28,
+          "wrong": 1,
+          "total": 29
+        },
+        "physics": {
+          "correct": 13,
+          "wrong": 2,
+          "total": 15
+        },
+        "astronomy": {
+          "correct": 33,
+          "wrong": 1,
+          "total": 34
+        },
+        "biology": {
+          "correct": 27,
+          "wrong": 2,
+          "total": 29
+        },
+        "math": {
+          "correct": 11,
+          "wrong": 0,
+          "total": 11
+        },
+        "programming": {
+          "correct": 30,
+          "wrong": 0,
+          "total": 30
+        },
+        "medical": {
+          "correct": 16,
+          "wrong": 0,
+          "total": 16
+        },
+        "pop_culture": {
+          "correct": 24,
+          "wrong": 0,
+          "total": 24
+        },
+        "internet_culture": {
+          "correct": 25,
+          "wrong": 0,
+          "total": 25
+        },
+        "chinese_history": {
+          "correct": 13,
+          "wrong": 0,
+          "total": 13
+        },
+        "chinese_geography": {
+          "correct": 15,
+          "wrong": 0,
+          "total": 15
+        },
+        "chinese_internet": {
+          "correct": 17,
+          "wrong": 0,
+          "total": 17
+        },
+        "chinese_literature": {
+          "correct": 14,
+          "wrong": 1,
+          "total": 15
+        },
+        "crypto_params": {
+          "correct": 20,
+          "wrong": 0,
+          "total": 20
+        }
+      }
+    }
+  },
+  "config_invariant_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    67,
+    68,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373,
+    374
+  ],
+  "config_variant_indices": [
+    18,
+    42,
+    66,
+    69,
+    91,
+    111,
+    131,
+    180,
+    209,
+    210,
+    289
+  ],
+  "timestamp_updated": "2026-03-16T06:05:10.214225",
+  "parser_fix_applied": "2026-03-18T08:54:18.038447",
+  "parser_fix_batches": 1
+}
