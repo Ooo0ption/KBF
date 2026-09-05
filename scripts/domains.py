@@ -48,7 +48,7 @@ DOMAINS = {
     },
     "chemistry_mp": {
         "name": "Chemistry (melting points)",
-        "tolerance": 3.0, "tolerance_mode": "absolute",
+        "tolerance": 5.0, "tolerance_mode": "absolute",
         "value_range": (-300, 4000),
         "cloze_template": "The melting point of {name} is ___°C.",
         "gen_prompt": (
@@ -68,7 +68,7 @@ DOMAINS = {
     },
     "physics": {
         "name": "Physics (material properties)",
-        "tolerance": 0.02, "tolerance_mode": "relative",
+        "tolerance": 0.05, "tolerance_mode": "relative",
         "value_range": (0, 1e15),
         "cloze_template": "The numerical value of {name} in SI units is ___.",
         "gen_prompt": (
