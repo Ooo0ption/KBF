@@ -1,5 +1,7 @@
 # KBF — Knowledge Boundary Fingerprinting
 
+> 🆕 **September 2026 Update:** We have generated a fresh batch of **probe sets for 28 models**, including the latest models as of September 2026. 🚀 [Explore the new probe sets](probes/reference_202609/) — give them a try!
+
 A black-box auditing tool for LLM APIs. Given a probe set generated from a
 reference model, KBF decides whether a target API is actually serving the
 claimed model — by exploiting the fact that every LLM produces a unique
@@ -15,8 +17,7 @@ Two user-facing scripts under `scripts/`:
 Two reference collections ship with this release: the original 16 sets under
 `probes/reference/` and 28 September 2026 sets under
 [`probes/reference_202609/`](probes/reference_202609/README.md). The September
-collection contains 10,327 probes; its dated filenames preserve enrollment
-provenance. Choose a collection explicitly with `--reference`.
+collection uses dated filenames to preserve enrollment provenance. Choose a collection explicitly with `--reference`.
 
 The scripts were synchronized from `ICLR_exp/scripts` on 2026-09-26. The new
 generator includes stricter consensus, per-domain generation budgets, optional
@@ -300,31 +301,47 @@ KBF/
 
 ## Reference probe sets
 
-The table reports the 16 original reference probe sets used in the paper,
-from `../experiments/E1_detection_accuracy/results/data/`. `#Probes` is
-`len(probes)`, and `Self-error` is the calibration `hamming / total`.
-Prices are per million tokens at the listed provider.
+The September 2026 collection contains **28 reference sets**
+under [`probes/reference_202609/`](probes/reference_202609/). Each model name
+below links to its probe file. `#Probes` is `len(probes)`; `Self-error` is the
+stored calibration `hamming / total`, using valid self-test answers only.
+Providers are taken from each file's enrollment metadata. Self-error is not
+an independent false-positive estimate.
 
-| Tier | Model                  | Family    | Provider     | Input ($/M) | Output ($/M) | #Probes | Self-error |
-|------|------------------------|-----------|--------------|------------:|-------------:|--------:|-----------:|
-| T1   | Claude Opus 4.6        | Anthropic | Amazon Bedrock |       5.00 |        25.00 |     681 |       4.3% |
-| T1   | Claude Sonnet 4.6      | Anthropic | Google         |       3.00 |        15.00 |     224 |       1.3% |
-| T1   | GPT-5.4                | OpenAI    | OpenAI         |       2.50 |        10.00 |     317 |       1.6% |
-| T1   | Gemini 3 Flash         | Google    | Google         |       0.50 |         2.50 |     315 |       2.2% |
-| T1   | GLM-5                  | Z.AI      | Z.AI           |       0.72 |         2.20 |     405 |       4.2% |
-| T1   | Qwen3.5-397B-A17B      | Alibaba   | Alibaba        |       0.39 |         1.20 |     243 |       1.7% |
-| T2   | DeepSeek-V3.2          | DeepSeek  | Google         |       0.26 |         0.42 |     364 |       3.3% |
-| T2   | GPT-4.1-mini           | OpenAI    | OpenAI         |       0.40 |         1.60 |     134 |       6.0% |
-| T2   | GLM-4.7                | Z.AI      | Z.AI           |       0.38 |         2.00 |     346 |       4.6% |
-| T2   | Kimi-K2-0905           | Moonshot  | Moonshot AI    |       0.40 |         2.50 |     300 |       4.7% |
-| T2   | Qwen3.5-27B            | Alibaba   | Alibaba        |       0.20 |         0.30 |     115 |       4.3% |
-| T3   | GPT-4.1-nano           | OpenAI    | OpenAI         |       0.10 |         0.40 |     109 |       7.3% |
-| T3   | LLaMA-4-Scout          | Meta      | Groq           |       0.08 |         0.30 |     146 |      11.7% |
-| T3   | Qwen3.5-9B             | Alibaba   | Together       |       0.05 |         0.10 |     105 |       3.8% |
-| T3   | GLM-4.7-Flash          | Z.AI      | DeepInfra      |       0.06 |         0.20 |     309 |      16.2% |
-| T3   | Gemini 2.5 Flash Lite  | Google    | Google         |       0.10 |         0.40 |     210 |      13.8% |
+| Model | Family | Provider | #Probes | Self-error |
+|---|---|---|---:|---:|
+| [Claude Fable 5.1](probes/reference_202609/claude-fable-5.1_20260911.json) | Anthropic | Anthropic | 453 | 2.6% |
+| [Claude Opus 4.6](probes/reference_202609/claude-opus-4.6_20260912.json) | Anthropic | Amazon Bedrock | 445 | 5.2% |
+| [Claude Opus 5](probes/reference_202609/claude-opus-5_20260911.json) | Anthropic | Claude Platform on AWS | 414 | 1.7% |
+| [Claude Sonnet 4.6](probes/reference_202609/claude-sonnet-4.6_20260912.json) | Anthropic | Google | 436 | 6.4% |
+| [DeepSeek V3.2](probes/reference_202609/deepseek-v3.2_20260912.json) | DeepSeek | Google | 380 | 6.1% |
+| [DeepSeek V4 Pro 0813](probes/reference_202609/deepseek-v4-pro-0813_20260911.json) | DeepSeek | Novita | 557 | 6.1% |
+| [DeepSeek V4.1 Flash](probes/reference_202609/deepseek-v4.1-flash_20260911.json) | DeepSeek | Novita | 363 | 8.0% |
+| [Gemini 2.5 Flash Lite](probes/reference_202609/gemini-2.5-flash-lite_20260918.json) | Google | Google | 319 | 10.7% |
+| [Gemini 3 Flash Preview](probes/reference_202609/gemini-3-flash-preview_20260912.json) | Google | Google | 409 | 5.1% |
+| [GLM-4.7](probes/reference_202609/glm-4.7_20260913.json) | Z.AI | Z.AI | 430 | 7.7% |
+| [GLM-5.3](probes/reference_202609/glm-5.3_20260911.json) | Z.AI | Z.AI | 372 | 7.3% |
+| [GLM-5](probes/reference_202609/glm-5_20260912.json) | Z.AI | Z.AI | 332 | 6.6% |
+| [GPT-4.1-mini](probes/reference_202609/gpt-4.1-mini_20260915.json) | OpenAI | OpenAI | 265 | 6.4% |
+| [GPT-4.1-nano](probes/reference_202609/gpt-4.1-nano_20260918.json) | OpenAI | OpenAI | 248 | 10.1% |
+| [GPT-5.4-mini](probes/reference_202609/gpt-5.4-mini_20260916.json) | OpenAI | OpenAI | 194 | 13.4% |
+| [GPT-5.4](probes/reference_202609/gpt-5.4_20260913.json) | OpenAI | OpenAI | 531 | 7.7% |
+| [GPT-5.6-luna](probes/reference_202609/gpt-5.6-luna_20260915.json) | OpenAI | OpenAI | 305 | 7.6% |
+| [GPT-5.6-sol](probes/reference_202609/gpt-5.6-sol_20260912.json) | OpenAI | OpenAI | 426 | 6.8% |
+| [GPT-6-astra](probes/reference_202609/gpt-6-astra_20260910.json) | OpenAI | OpenAI | 538 | 1.5% |
+| [HY4 Preview](probes/reference_202609/hy4-preview_20260911.json) | Tencent | Tencent | 538 | 5.8% |
+| [Kimi K2 0905](probes/reference_202609/kimi-k2-0905_20260912.json) | Moonshot | Novita | 363 | 7.8% |
+| [Kimi K3](probes/reference_202609/kimi-k3_20260912.json) | Moonshot | Moonshot AI | 424 | 8.5% |
+| [Llama 4 Scout](probes/reference_202609/llama-4-scout_20260918.json) | Meta | Novita | 231 | 15.2% |
+| [MiniMax M3](probes/reference_202609/minimax-m3_20260911.json) | MiniMax | Minimax | 311 | 8.1% |
+| [Qwen3.5-27B](probes/reference_202609/qwen3.5-27b_20260913.json) | Alibaba | Alibaba | 149 | 6.7% |
+| [Qwen3.5-397B-A17B](probes/reference_202609/qwen3.5-397b-a17b_20260912.json) | Alibaba | Alibaba | 254 | 6.3% |
+| [Qwen3.5-9B](probes/reference_202609/qwen3.5-9b_20260913.json) | Alibaba | Together | 240 | 5.0% |
+| [Seed 2.1 Turbo](probes/reference_202609/seed-2-1-turbo_20260911.json) | ByteDance | Seed | 400 | 6.0% |
 
-Prices are sourced from OpenRouter as of March 2026 and may have drifted since.
+The original 16 reference sets remain available under
+[`probes/reference/`](probes/reference/). Choose the desired collection
+explicitly with `--reference`; each set has its own probes and calibration.
 
 ---
 
