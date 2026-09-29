@@ -206,7 +206,7 @@ def main():
                     help="Reference probe file (e.g. probes/reference/gpt-5.4.json)")
     ap.add_argument("--target", nargs="+",
                     help="Target model name(s) — sent in payload's `model` field")
-    # Endpoint / auth — three-layer resolution (CLI > endpoint profile > env var).
+    # Endpoint / auth — CLI flags override the selected profile per field.
     # See scripts/endpoints.json.example for the multi-endpoint format.
     ap.add_argument("--endpoint", default=None,
                     help="Named profile from scripts/endpoints.json. CLI flags "

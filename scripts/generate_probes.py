@@ -11,6 +11,7 @@ Usage:
 """
 
 import json, time, re, sys, argparse, random
+from collections import defaultdict
 from pathlib import Path
 from datetime import datetime
 
@@ -25,7 +26,7 @@ from kbf_common import (
     PROVIDER_MAP, FIXED_SYS_PROMPT, CONSENSUS_CONFIGS, SUPPORTED_PROTOCOLS,
     ResolvedEndpoint, resolve_endpoint, print_endpoints, print_auth_banner,
     query_api, cloze_query_batch, json_safe, probe_consensus,
-    auto_pin_provider,
+    auto_pin_provider, check_match, _round_half_up,
 )
 from domains import DOMAINS, DIFFICULTY_TIERS
 
@@ -78,20 +79,35 @@ def parse_generation(text):
     return items
 
 
-def check_match(ref_val, test_val, dcfg):
-    """Check match using domain config dict (wraps kbf_common.check_match).
+# Consensus is stricter than the test: a probe whose three answers only just
+# agree under the test's own tolerance is one the fourth query is likely to
+# miss. Relative-tolerance domains require the three answers to sit inside a
+# fixed band around their mean, tighter than every relative domain's test
+# tolerance (5% / 10%); absolute-tolerance domains require the three to be the
+# same integer, which is how kbf_common.check_match compares them.
+CONSENSUS_REL_BAND = 0.02
 
-    generate_probes.py uses dcfg dicts with 'tolerance' and 'tolerance_mode',
-    while kbf_common uses domain string keys. This wrapper handles the conversion.
+# Fixed so a --layout-filter run is reproducible.
+LAYOUT_FILTER_SEED = 9000
+
+
+def consensus_ok(answers, dcfg):
+    """Do these three answers count as one answer?
+
+    Admission only — the label is chosen separately (and is always the t0
+    answer verbatim). Absolute domains hold integer quantities (years, counts,
+    key sizes) and are judged as integers; relative domains hold continuous
+    ones and are judged by spread.
     """
-    if test_val is None: return False
-    mode = dcfg.get("tolerance_mode", "absolute")
-    tol = dcfg["tolerance"]
-    if mode == "relative":
-        if ref_val == 0: return abs(test_val) < 1.0
-        return abs(test_val - ref_val) / abs(ref_val) <= tol
-    else:
-        return abs(test_val - ref_val) <= tol
+    vals = [a for a in answers if a is not None]
+    if len(vals) != len(answers) or not vals:
+        return False
+    if dcfg.get("tolerance_mode", "absolute") == "relative":
+        mean_val = sum(vals) / len(vals)
+        if mean_val == 0:
+            return False
+        return max(abs(a - mean_val) / abs(mean_val) for a in vals) <= CONSENSUS_REL_BAND
+    return len({_round_half_up(a) for a in vals}) == 1
 
 
 # ── Cloze Verification ──────────────────────────────────────────────
@@ -119,9 +135,31 @@ def cloze_verify_batch(resolved: ResolvedEndpoint, model, items, dcfg,
 
 # ── Probe Generation (Adaptive Frontier) ─────────────────────────────
 
+def split_quota(max_probes, domain_keys):
+    """Split a total probe cap into per-domain quotas.
+
+    Spreads the remainder over the first domains so the quotas sum to exactly
+    `max_probes` (e.g. 400 over 15 domains -> ten 27s and five 26s). Returns
+    {domain_key: quota}; an empty dict when no cap is set.
+    """
+    if not max_probes or not domain_keys:
+        return {}
+    n = len(domain_keys)
+    base, extra = divmod(max_probes, n)
+    return {dk: base + (1 if i < extra else 0)
+            for i, dk in enumerate(domain_keys)}
+
+
 def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
-                    min_per_domain=5, batch_size=10, contrast_model=None):
-    """Generate and verify probes for one domain."""
+                    min_per_domain=5, batch_size=10, contrast_model=None,
+                    quota=None, contrast_resolved=None):
+    """Generate and verify probes for one domain.
+
+    `quota` is a per-domain floor, not a cap: the round loop stops before the
+    next round once the domain holds at least `quota` verified probes, and
+    everything the crossing round produced is kept. A domain that runs out of
+    rounds first simply keeps what it has.
+    """
     print(f"\n  ── {dcfg['name']} ──", flush=True)
     seen = set()
     verified = []
@@ -186,7 +224,8 @@ def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
         # ── Step B: Contrastive screening BEFORE remaining consensus ──
         # Screen early to avoid wasting API calls on non-discriminative probes
         if contrast_model and items_with_t0:
-            contrast_vals = cloze_verify_batch(resolved, contrast_model, items_with_t0, dcfg,
+            contrast_vals = cloze_verify_batch(contrast_resolved or resolved,
+                                               contrast_model, items_with_t0, dcfg,
                                                sys_prompt="", temp=0.0,
                                                batch_size=batch_size)
             screened_items = []
@@ -200,7 +239,7 @@ def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
                     # bias the kept set toward parser failures.
                     n_no_answer += 1
                     continue
-                if check_match(item["value"], cv, dcfg):
+                if check_match(item["value"], cv, dk):
                     item["contrast_agrees"] = True
                     # contrast agrees → not discriminative, skip
                     continue
@@ -230,33 +269,28 @@ def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
             for j, item in enumerate(shuffled):
                 verify_raw[item["name"]][cfg["name"]] = vals[j]
 
-        # ── Step D: Consensus — ALL 3 configs must agree ──
+        # ── Step D: Consensus — ALL 3 configs must agree with the t0 answer ──
+        # The label IS the t0 answer, stored verbatim. t0 is the config the
+        # self-test and kbf_test.py replicate (temp=0, FIXED_SYS_PROMPT), so
+        # anchoring there keeps every label a value the model actually
+        # produced — never a mean of three answers or a rounded stand-in.
         round_verified = []
+        cfg0_name = CONSENSUS_CONFIGS[0]["name"]
         for item in items_with_t0:
             raw = verify_raw.get(item["name"], {})
             answers = [raw.get(cfg["name"]) for cfg in CONSENSUS_CONFIGS]
-            answers_valid = [a for a in answers if a is not None]
-            if len(answers_valid) < len(CONSENSUS_CONFIGS):
+            if any(a is None for a in answers):
                 continue
 
-            if dcfg.get("tolerance_mode") == "relative":
-                mean_val = sum(answers_valid) / len(answers_valid)
-                if mean_val == 0: continue
-                spread = max(abs(a - mean_val) / abs(mean_val) for a in answers_valid)
-                if spread <= 0.02:
-                    consensus = round(mean_val, 4)
-                    if check_match(item["value"], consensus, dcfg):
-                        item["value"] = consensus
-                        item["consensus_raw"] = raw
-                        round_verified.append(item)
-            else:
-                rounded = [round(a) for a in answers_valid]
-                if len(set(rounded)) == 1:
-                    consensus = float(rounded[0])
-                    if check_match(item["value"], consensus, dcfg):
-                        item["value"] = consensus
-                        item["consensus_raw"] = raw
-                        round_verified.append(item)
+            label = raw.get(cfg0_name)
+            if not consensus_ok(answers, dcfg):
+                continue
+            # the verified answer must still match what generation listed
+            if not check_match(item["value"], label, dk):
+                continue
+            item["value"] = label
+            item["consensus_raw"] = raw
+            round_verified.append(item)
 
         n_v = len(round_verified)
         vrate = n_v / len(new_items) if new_items else 0
@@ -273,6 +307,11 @@ def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
             consecutive_zero = 0
 
         print(f"{label} -> {n_v} verified ({vrate:.0%}) (total: {len(verified)})", flush=True)
+
+        if quota and len(verified) >= quota:
+            print(f"    >> Quota reached ({len(verified)}/{quota}), stopping", flush=True)
+            break
+
         time.sleep(0.3)
 
     tier_counts = {}
@@ -287,11 +326,89 @@ def generate_domain(resolved: ResolvedEndpoint, model, dk, dcfg, max_rounds,
         "rounds_used": len(round_history),
         "tier_distribution": tier_counts,
         "round_history": round_history,
+        "quota": quota,
+        "quota_met": (len(verified) >= quota) if quota else None,
     }
     return verified, stats
 
 
 # ── Self-test helper ─────────────────────────────────────────────────
+
+def layout_filter(resolved: ResolvedEndpoint, probe_path: Path, ref: str,
+                  passes: int = 1, batch_size: int = 10) -> int:
+    """Drop probes whose answer depends on which other probes share their prompt.
+
+    Consensus asks a candidate alongside its own round's candidates — same theme,
+    same difficulty tier. kbf_test.py asks it alongside its file-order neighbours,
+    which mostly come from other rounds. A probe that agrees under the first
+    layout but not the second inflates `self_error`, and therefore `p0` and the
+    DIFF threshold, without carrying any fingerprint signal.
+
+    So ask everything once more at temp=0 under a fresh domain-wide shuffle and
+    delete whatever moves. Costs one extra pass over the finished set (~30
+    prompts for 300 probes) per `passes`. Rewrites the probe file in place and
+    returns how many probes were removed.
+    """
+    from kbf_common import cloze_query_batch, check_match as kbf_check_match, \
+        FIXED_SYS_PROMPT, json_safe
+
+    data = json.loads(Path(probe_path).read_text())
+    probes = data["probes"]
+    labels = [probe_consensus(p) for p in probes]
+    provider = auto_pin_provider(ref, resolved.api_base, resolved.protocol)
+
+    print(f"\n=== Layout filter: {passes} extra pass(es) over {len(probes)} probes ===",
+          flush=True)
+    sensitive = [False] * len(probes)
+    for k in range(passes):
+        by_domain = defaultdict(list)
+        for i, p in enumerate(probes):
+            by_domain[p["domain"]].append(i)
+        rng = random.Random(LAYOUT_FILTER_SEED + k)
+        order = []
+        for dk in sorted(by_domain):
+            idx = list(by_domain[dk])
+            rng.shuffle(idx)
+            order += idx
+
+        vals, _, usage = cloze_query_batch(
+            ref, [probes[i] for i in order], sys_prompt=FIXED_SYS_PROMPT, temp=0.0,
+            batch_size=batch_size, api_base=resolved.api_base,
+            api_key=resolved.api_key, protocol=resolved.protocol,
+            provider=provider, consensus_vals=[labels[i] for i in order], quiet=True,
+        )
+        moved = 0
+        for i, v in zip(order, vals):
+            c = labels[i]
+            if v is None or c is None or not kbf_check_match(c, v, probes[i]["domain"]):
+                if not sensitive[i]:
+                    moved += 1
+                sensitive[i] = True
+        print(f"  pass {k+1}: {moved} newly context-sensitive "
+              f"(total {sum(sensitive)}/{len(probes)}), usage {usage}", flush=True)
+
+    kept = [p for p, bad in zip(probes, sensitive) if not bad]
+    dropped = len(probes) - len(kept)
+    counts = {}
+    for p in kept:
+        counts[p["domain"]] = counts.get(p["domain"], 0) + 1
+    data["probes"] = kept
+    data["total_probes"] = len(kept)
+    data["domains"] = dict(sorted(counts.items()))
+    prev = data.get("layout_filter") or {}
+    data["layout_filter"] = {"passes": prev.get("passes", 0) + passes,
+                             "batch_size": batch_size,
+                             "dropped": prev.get("dropped", 0) + dropped,
+                             "kept": len(kept)}
+    if "+layout_filter" not in data.get("verification_mode", ""):
+        data["verification_mode"] = data.get("verification_mode", "") + "+layout_filter"
+    data.pop("target_results", None)
+    data.pop("self_error", None)
+    with open(probe_path, "w") as f:
+        json.dump(json_safe(data), f, indent=2, ensure_ascii=False)
+    print(f"  dropped {dropped}, kept {len(kept)}", flush=True)
+    return dropped
+
 
 def run_self_test(resolved: ResolvedEndpoint, probe_path: Path, ref: str,
                   batch_size: int = 10) -> float:
@@ -359,8 +476,25 @@ def main():
     parser.add_argument("--reference", help="Reference model (e.g. google/gemini-2.5-flash-lite)")
     parser.add_argument("--min-probes", type=int, default=100, help="Minimum total probes (default 100)")
     parser.add_argument("--max-rounds", type=int, default=6, help="Max rounds per domain (default 6)")
+    parser.add_argument("--max-probes", type=int, default=None, metavar="N",
+                        help="Probe budget: N split evenly into per-domain quotas (e.g. 400 "
+                             "over 15 domains -> 27/26 each). A domain stops before its next "
+                             "round once it holds its quota, so generation cost scales with N "
+                             "instead of with --max-rounds. The quota is a floor: the round "
+                             "that crosses it is kept whole, so the total lands at or a little "
+                             "above N. Off by default (every domain runs all rounds).")
     parser.add_argument("--batch-size", type=int, default=10, help="Batch size for cloze queries (default 10)")
     parser.add_argument("--contrast", default="qwen/qwen3.5-9b", help="Contrast model for screening (default: qwen/qwen3.5-9b)")
+    parser.add_argument("--contrast-endpoint", default=None,
+                        help="Separate named endpoint profile for the contrast model "
+                             "(default: use the reference endpoint).")
+    parser.add_argument("--layout-filter", type=int, default=0, metavar="N",
+                        help="After consensus, ask the whole set N more times at "
+                             "temp=0 under a fresh domain-wide shuffle and delete "
+                             "every probe whose answer moves. Costs one pass over "
+                             "the finished set per N (~30 prompts per 300 probes). "
+                             "Off by default; recommended for weaker reference "
+                             "models — see README.md.")
     parser.add_argument("--no-contrast", action="store_true", help="Skip contrastive screening (use for T3 references)")
     parser.add_argument("--domains", nargs="*", default=None, help="Specific domains to generate (default: all)")
     parser.add_argument("--output", default=None,
@@ -381,7 +515,7 @@ def main():
                         help="API endpoint URL (default: derived from --protocol).")
     parser.add_argument("--api-key", default=None,
                         help="API key. Empty string is rejected. If omitted, falls back to the "
-                             "endpoint profile or the standard env var for the protocol/host.")
+                             "endpoint profile (use api_key_env for an environment variable).")
     parser.add_argument("--protocol", default=None, choices=list(SUPPORTED_PROTOCOLS),
                         help="API request/response format (default: openai-chat).")
     parser.add_argument("--list-endpoints", action="store_true",
@@ -424,10 +558,23 @@ def main():
         if not probe_path.exists():
             print(f"ERROR: {probe_path} not found")
             return
+        if args.layout_filter > 0:
+            layout_filter(resolved, probe_path, ref, passes=args.layout_filter,
+                          batch_size=args.batch_size)
         run_self_test(resolved, probe_path, ref, batch_size=args.batch_size)
         return
 
     # ── Normal probe generation mode ──
+    contrast_resolved = resolved
+    if args.contrast_endpoint and not args.no_contrast:
+        try:
+            contrast_resolved = resolve_endpoint(cli_endpoint=args.contrast_endpoint)
+        except ValueError as e:
+            print(f"ERROR: contrast endpoint: {e}")
+            sys.exit(2)
+        print("Contrast endpoint:", flush=True)
+        print_auth_banner(contrast_resolved, indent="  ")
+
     print(f"=== Probe Generation: {ref} ===", flush=True)
     print(f"Min probes: {args.min_probes}, Max rounds: {args.max_rounds}", flush=True)
     print(f"Verification: cloze format, (N) numbering, 3-config consensus", flush=True)
@@ -437,6 +584,13 @@ def main():
         print(f"Contrastive screening: {args.contrast}", flush=True)
 
     domains_to_run = args.domains or list(DOMAINS.keys())
+    known_domains = [dk for dk in domains_to_run if dk in DOMAINS]
+    quotas = split_quota(args.max_probes, known_domains)
+    if quotas:
+        lo, hi = min(quotas.values()), max(quotas.values())
+        span = f"{lo}" if lo == hi else f"{lo}-{hi}"
+        print(f"Probe cap: {args.max_probes} total over {len(known_domains)} domains "
+              f"({span} per domain, stop on fill)", flush=True)
     all_probes = []
     frontier_stats = {}
 
@@ -449,7 +603,9 @@ def main():
         probes, stats = generate_domain(resolved, ref, dk, dcfg,
                                         max_rounds=args.max_rounds,
                                         batch_size=args.batch_size,
-                                        contrast_model=contrast)
+                                        contrast_model=contrast,
+                                        quota=quotas.get(dk),
+                                        contrast_resolved=contrast_resolved)
         all_probes.extend(probes)
         frontier_stats[dk] = stats
 
@@ -459,7 +615,9 @@ def main():
     if not args.no_contrast:
         n_with_contrast = sum(1 for p in all_probes if p.get("contrast_value") is not None)
         contrast_stats = {"contrast_model": args.contrast, "screened_inline": True,
-                          "n_with_contrast_data": n_with_contrast}
+                          "n_with_contrast_data": n_with_contrast,
+                          "api_base": contrast_resolved.api_base,
+                          "protocol": contrast_resolved.protocol}
 
     print(f"\n{'='*60}", flush=True)
     print(f"TOTAL: {len(all_probes)} final probes (screening done inline)", flush=True)
@@ -489,12 +647,16 @@ def main():
         return
     output = {
         "reference_model": ref,
+        "reference_endpoint": {"api_base": resolved.api_base,
+                               "protocol": resolved.protocol},
         "timestamp": datetime.now().isoformat(),
         "total_probes": len(all_probes),
         "generation_mode": "adaptive_frontier",
         "verification_mode": "cloze_3config_consensus",
         "numbering_format": "(N)",
         "min_probes_target": args.min_probes,
+        "max_probes_budget": args.max_probes,
+        "domain_quotas": quotas or None,
         "contrast_screening": contrast_stats,
         "provider_map": {k: v for k, v in PROVIDER_MAP.items() if k in [ref, args.contrast]},
         "domains": domain_counts,
@@ -517,6 +679,9 @@ def main():
               f"`python3 scripts/generate_probes.py --reference {ref} "
               f"--self-test-only {out_path}` later to enable kbf_test.py.", flush=True)
     else:
+        if args.layout_filter > 0:
+            layout_filter(resolved, out_path, ref, passes=args.layout_filter,
+                          batch_size=args.batch_size)
         run_self_test(resolved, out_path, ref, batch_size=args.batch_size)
 
 

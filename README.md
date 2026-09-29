@@ -12,7 +12,18 @@ Two user-facing scripts under `scripts/`:
 - `generate_probes.py` — build a new probe set for a model not already in
   `probes/reference/`.
 
-16 ready-to-use reference probe sets ship under `probes/reference/`.
+Two reference collections ship with this release: the original 16 sets under
+`probes/reference/` and 28 September 2026 sets under
+[`probes/reference_202609/`](probes/reference_202609/README.md). The September
+collection contains 10,327 probes; its dated filenames preserve enrollment
+provenance. Choose a collection explicitly with `--reference`.
+
+The scripts were synchronized from `ICLR_exp/scripts` on 2026-09-26. The new
+generator includes stricter consensus, per-domain generation budgets, optional
+layout filtering, and a separate contrast endpoint. The shared scorer rounds
+absolute-domain values to integers (halves away from zero) before applying the
+domain tolerance. Provider defaults also reflect the updated source; use the
+provider recorded by a probe set when reproducing its enrollment conditions.
 
 ---
 
@@ -73,8 +84,12 @@ Writes `probes/generated/<model>_<YYYYMMDD>.json` (refuses to overwrite unless
 |------|---------|-------|
 | `--min-probes` | `100` | Minimum total probes |
 | `--max-rounds` | `6` | Max rounds per domain |
+| `--max-probes` | unset | Generation budget split into per-domain quotas; the crossing round is retained, so this is not a strict final cap |
 | `--contrast` | `qwen/qwen3.5-9b` | Contrast model for screening |
+| `--contrast-endpoint` | reference endpoint | Separate named profile for contrast screening, e.g. `openrouter` when the reference uses the official OpenAI endpoint |
+| `--layout-filter` | `0` (off) | Extra passes that delete prompt-layout-sensitive probes|
 | `--output` | `probes/generated/<model>_<YYYYMMDD>.json` | Output path |
+
 
 #### Step 2 — Test a target
 
@@ -123,14 +138,19 @@ python3 scripts/generate_probes.py \
 
 `kbf_test.py` reports `SAME`, `DIFF`, or `UNDETERMINED` based on a one-sided
 binomial test against the reference's own self-test error rate, with a
-Clopper-Pearson 99 % upper bound for `p0`:
+Clopper-Pearson 99 % upper bound for `p0`. Missing, unparseable, and
+out-of-range answers are stored as `null` and excluded from scoring.
+`total` counts valid scored answers, `hamming` counts mismatches among them,
+and the error rate is `hamming / total`. Calibration uses its own valid-answer
+count `self_total` for CP99, and each target uses its own `total` for the
+binomial test.
 
 | field             | meaning |
 |-------------------|---------|
 | `ref self_error`  | how often the reference itself misses its own probes (baseline noise) |
 | `target error`    | how often the target API misses the same probes |
 | `CP99 bound p0`   | 99 % upper bound for the reference's true error rate |
-| `p_value_binomial`| probability the target's error rate is consistent with `p0` |
+| `p_value_binomial`| one-sided tail probability `P(X >= observed errors | n, p0)`, not a probability that the null is true |
 | **verdict**       | `DIFF` if `p_value_binomial < 0.05` else `SAME` |
 
 `UNDETERMINED` means too few probes were answered to draw a conclusion —
@@ -230,8 +250,7 @@ Find which backends are currently live for a model at
 - **Thinking-model timeout / empty output.** KBF auto-discovers a
   thinking-suppression strategy on first call and caches it. The reason we
   disable thinking is purely to keep token usage — and therefore audit cost —
-  bounded. We ship several suppression strategies, but because different relays and vendors
-  accept different fields, the built-in set is not guaranteed to work on every endpoint.
+  bounded. We ship several suppression strategies for vendor-specific fields.
   Discovery now also checks `usage.reasoning_tokens` so a strategy the
   endpoint accepts but silently ignores is rejected automatically. If none of
   the built-in strategies actually suppresses thinking on your endpoint, you
@@ -264,7 +283,8 @@ truncate below that break self-consistency.
 ```
 KBF/
 ├── probes/
-│   ├── reference/       ← 16 official probe sets (READ-ONLY)
+│   ├── reference/       ← 16 original probe sets (READ-ONLY)
+│   ├── reference_202609/ ← 28 September 2026 probe sets (READ-ONLY)
 │   └── generated/       ← outputs of generate_probes.py (gitignored)
 ├── results/             ← outputs of kbf_test.py (gitignored)
 ├── scripts/
@@ -280,9 +300,10 @@ KBF/
 
 ## Reference probe sets
 
-The 16 reference probe sets bundled under `probes/reference/`. Prices are per
-million tokens at the listed provider; `self-error` is the reference model's
-own miss rate on its probes (the baseline noise floor `p0` is computed from).
+The table reports the 16 original reference probe sets used in the paper,
+from `../experiments/E1_detection_accuracy/results/data/`. `#Probes` is
+`len(probes)`, and `Self-error` is the calibration `hamming / total`.
+Prices are per million tokens at the listed provider.
 
 | Tier | Model                  | Family    | Provider     | Input ($/M) | Output ($/M) | #Probes | Self-error |
 |------|------------------------|-----------|--------------|------------:|-------------:|--------:|-----------:|
@@ -290,22 +311,20 @@ own miss rate on its probes (the baseline noise floor `p0` is computed from).
 | T1   | Claude Sonnet 4.6      | Anthropic | Google         |       3.00 |        15.00 |     224 |       1.3% |
 | T1   | GPT-5.4                | OpenAI    | OpenAI         |       2.50 |        10.00 |     317 |       1.6% |
 | T1   | Gemini 3 Flash         | Google    | Google         |       0.50 |         2.50 |     315 |       2.2% |
-| T1   | GLM-5                  | Z.AI      | Z.AI           |       0.72 |         2.20 |     415 |       4.1% |
-| T1   | Qwen3.5-397B-A17B †    | Alibaba   | Alibaba        |       0.39 |         1.20 |     279 |       9.0% |
+| T1   | GLM-5                  | Z.AI      | Z.AI           |       0.72 |         2.20 |     405 |       4.2% |
+| T1   | Qwen3.5-397B-A17B      | Alibaba   | Alibaba        |       0.39 |         1.20 |     243 |       1.7% |
 | T2   | DeepSeek-V3.2          | DeepSeek  | Google         |       0.26 |         0.42 |     364 |       3.3% |
 | T2   | GPT-4.1-mini           | OpenAI    | OpenAI         |       0.40 |         1.60 |     134 |       6.0% |
-| T2   | GLM-4.7                | Z.AI      | Z.AI           |       0.38 |         2.00 |     356 |       4.6% |
+| T2   | GLM-4.7                | Z.AI      | Z.AI           |       0.38 |         2.00 |     346 |       4.6% |
 | T2   | Kimi-K2-0905           | Moonshot  | Moonshot AI    |       0.40 |         2.50 |     300 |       4.7% |
 | T2   | Qwen3.5-27B            | Alibaba   | Alibaba        |       0.20 |         0.30 |     115 |       4.3% |
 | T3   | GPT-4.1-nano           | OpenAI    | OpenAI         |       0.10 |         0.40 |     109 |       7.3% |
 | T3   | LLaMA-4-Scout          | Meta      | Groq           |       0.08 |         0.30 |     146 |      11.7% |
 | T3   | Qwen3.5-9B             | Alibaba   | Together       |       0.05 |         0.10 |     105 |       3.8% |
-| T3   | GLM-4.7-Flash          | Z.AI      | DeepInfra      |       0.06 |         0.20 |     309 |      14.2% |
+| T3   | GLM-4.7-Flash          | Z.AI      | DeepInfra      |       0.06 |         0.20 |     309 |      16.2% |
 | T3   | Gemini 2.5 Flash Lite  | Google    | Google         |       0.10 |         0.40 |     210 |      13.8% |
 
 Prices are sourced from OpenRouter as of March 2026 and may have drifted since.
-
-† Regenerated in May 2026.
 
 ---
 

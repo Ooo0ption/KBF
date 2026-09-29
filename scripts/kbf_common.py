@@ -9,7 +9,7 @@ All scripts import from here. Single source of truth for:
 - Statistical tests
 """
 
-import os, re, sys, time, json
+import math, os, re, sys, time, json
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional
@@ -35,20 +35,33 @@ RULES: Output ONLY in (N) <number> format, one per line. No units, no words, no 
 # relays, etc.); those providers don't need an entry here.
 PROVIDER_MAP = {
     "deepseek/deepseek-v3.2": "Google",
+    "deepseek/deepseek-v4.1-flash": "Novita",
+    "deepseek/deepseek-v4-pro-0813": "Novita",
     "google/gemini-3-flash-preview": "Google",
     "z-ai/glm-5": "Z.AI",
     "z-ai/glm-4.7": "Z.AI",
     "qwen/qwen3.5-27b": "Alibaba",
     "qwen/qwen3.5-9b": "Together",
+    "openai/gpt-6-astra": "OpenAI",
     "openai/gpt-5.4": "OpenAI",
+    "openai/gpt-5.4-mini": "OpenAI",
+    "openai/gpt-5.6-luna": "OpenAI",
     "openai/gpt-4.1-mini": "OpenAI",
     "openai/gpt-4.1-nano": "OpenAI",
-    "moonshotai/kimi-k2-0905": "SiliconFlow",
+    "moonshotai/kimi-k3": "Moonshot AI",
+    "openai/gpt-5.6-sol": "OpenAI",
+    "moonshotai/kimi-k2-0905": "Novita",
     "qwen/qwen3.5-397b-a17b": "Alibaba",
+    "anthropic/claude-fable-5.1": "Anthropic",
     "anthropic/claude-sonnet-4.6": "Google",
     "anthropic/claude-opus-4.6": "Amazon Bedrock",
-    "meta-llama/llama-4-scout": "Groq",
-    "z-ai/glm-4.7-flash": "DeepInfra", 
+    "anthropic/claude-opus-5": "Claude Platform on AWS",
+    "meta-llama/llama-4-scout": "Novita",
+    "z-ai/glm-5.3": "Z.AI",
+    "bytedance-seed/seed-2-1-turbo": "Seed",
+    "tencent/hy4-preview": "Tencent",
+    "minimax/minimax-m3": "Minimax",
+    "z-ai/glm-4.7-flash": "Cloudflare",
     "google/gemini-2.5-flash-lite": "Google",
 }
 
@@ -391,20 +404,33 @@ def extract_nums(text, n, vr):
 
 # ── Match Checking ──
 
+def _round_half_up(x):
+    """Round half away from zero — round() rounds halves to even, which makes
+    a comparison depend on the parity of the integer part (16.5 -> 16 but
+    17.5 -> 18)."""
+    return math.floor(x + 0.5) if x >= 0 else math.ceil(x - 0.5)
+
+
 def check_match(ref_val, test_val, domain):
     """Check if test value matches reference within domain tolerance."""
     if ref_val is None or test_val is None:
         return False
     tol, mode = DOMAIN_TOL.get(domain, (0.05, "relative"))
     if mode == "absolute":
-        return abs(ref_val - test_val) <= tol
+        # Absolute-tolerance domains hold integer quantities — years, counts,
+        # key sizes, chromosome numbers. Both sides are rounded so that a
+        # different rendering of the same integer (4.0 vs 4.08 for a version
+        # number, 74.0 vs 74.03 for a box office in millions) is not scored as
+        # a fingerprint mismatch. Generation applies the same rule. Rounding is
+        # half-up rather than round()'s banker's rounding, so the comparison
+        # does not depend on the parity of the integer part.
+        return abs(_round_half_up(ref_val) - _round_half_up(test_val)) <= tol
     return abs(ref_val - test_val) / max(abs(ref_val), 1e-10) <= tol
 
 
 # ── Statistical Tests ──
 # Fixed thresholds — not exposed on the CLI. KBF's premise is a calibrated
 # SAME/DIFF judgement; letting users tune these per run defeats the purpose.
-# Combined guarantee: at most ~1% × 5% = 0.05% false-positive rate per call.
 KBF_CONFIDENCE = 0.99   # Clopper-Pearson confidence for p0 upper bound
 KBF_ALPHA = 0.05        # One-sided binomial test threshold for DIFF
 
@@ -413,8 +439,8 @@ def clopper_pearson_p0(k, n, confidence=KBF_CONFIDENCE):
     """Clopper-Pearson upper confidence bound for binomial proportion.
 
     Given k errors in n trials, returns p0 such that the true error rate
-    is <= p0 with the given confidence level. Provides a formal <=1% FP
-    guarantee per test (at default 99% confidence).
+    is covered by p0 with the given frequentist confidence level under the
+    binomial sampling model.
     """
     from scipy.stats import beta as beta_dist
     if n == 0:
@@ -465,6 +491,10 @@ BARE_EXPANDED_STRATEGY = "bare_expanded"
 # strategy fails. Set from the --allow-thinking CLI flag in entry scripts.
 # Off by default because in this mode token cost is unbounded.
 ALLOW_THINKING_FALLBACK = False
+
+# Seconds to wait for one discovery probe. Must exceed the endpoint's
+# worst-case unsuppressed latency (Z.AI's free tier peaked at 464s).
+DISCOVERY_TIMEOUT = 600
 
 # Per-session cache: (api_base, protocol, model) -> working strategy name.
 # Populated on first query to an (endpoint, model) pair; reused thereafter.
@@ -542,7 +572,12 @@ def discover_thinking_strategy(protocol, model, api_base, api_key,
         last_exc = None
         for retry in range(3):
             try:
-                resp = requests.post(api_base, headers=headers, json=payload, timeout=60)
+                # Generous timeout: an endpoint that has not been suppressed yet
+                # is still thinking, so the probe that discovers the suppression
+                # is the slowest request we ever send. A short timeout here makes
+                # every strategy look like it failed on a slow endpoint.
+                resp = requests.post(api_base, headers=headers, json=payload,
+                                     timeout=DISCOVERY_TIMEOUT)
                 if resp.status_code == 429:
                     time.sleep(5 * (retry + 1))
                     continue
