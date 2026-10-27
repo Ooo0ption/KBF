@@ -79,6 +79,24 @@ python3 scripts/generate_probes.py \
 Writes `probes/generated/<model>_<YYYYMMDD>.json` (refuses to overwrite unless
 `--force`) and ends with a self-test pass unless you pass `--no-self-test`.
 
+> **Notice — reducing self-error:** For some weaker reference models, adding
+> `--layout-filter 1` during probe generation can help reduce `self_error` by
+> removing probes whose answers are sensitive to how probes are grouped in
+> the prompt:
+
+```bash
+python3 scripts/generate_probes.py \
+    --reference     openai/gpt-5.4 \
+    --endpoint      openrouter \
+    --layout-filter 1 \
+    --output        probes/generated/gpt-5.4_layout_filtered.json
+```
+
+Increase `--layout-filter N` for more filtering passes; each pass requires
+additional API calls and may reduce the number of retained probes. Check the
+final self-test's `self_error` after filtering. Keep the automatic self-test
+enabled: `--no-self-test` also skips layout filtering during generation.
+
 **`generate_probes.py` defaults:**
 
 | Flag | Default | Notes |
